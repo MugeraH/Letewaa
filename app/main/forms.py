@@ -7,8 +7,25 @@ from wtforms.validators import DataRequired, Email, Length
 
 class OrderForm(FlaskForm):
     pizza_name = StringField("What type of pizza would you like?", validators=[DataRequired("Please enter a pizza.")])
-    time = FormField(TimeForm)
     now_or_later = SelectField("Is your pizza for now or later?", choices=[("NOW", "Now"), ("LATER", "Later")])
-    delivery = SelectField("Would you like your pizza delivered or take out?",choices=[("DELIVERY", "Delivery"), ("TAKEOUT", "Take Out")])
-    price = SelectField()
+    price = SelectField("price")
     submit = SubmitField("Place Order")
+
+class UserForm(FlaskForm):
+    username = StringField("name")
+    email = StringField("email")
+    phone=StringField("Contact info")
+
+
+class SellerForm(FlaskForm):
+    username = StringField("name")
+    email=StringField("email")
+    phone=StringField("phone")
+    
+
+
+class ProductForm(FlaskForm):    
+    product_name = StringField("Name")
+    price = StringField("Price")
+    description = TextAreaField("Description")   
+    
