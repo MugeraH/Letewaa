@@ -18,14 +18,14 @@ class UserForm(FlaskForm):
 
 
 class SellerForm(FlaskForm):
-    username = StringField("name")
+    username = StringField("seller name")
     email=StringField("email")
-    phone=StringField("phone")
+    phone=StringField("contact info")
     
 
 
 class ProductForm(FlaskForm):    
-    product_name = StringField("Name")
+    product_name = StringField("Pizza Name")
     price = StringField("Price")
-    description = TextAreaField("Description")   
+    description = TextAreaField("Description")
     
