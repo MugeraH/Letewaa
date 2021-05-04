@@ -1,0 +1,18 @@
+<div class="container-fluid p-0">
+  {% block styles %}
+  <link
+    rel="stylesheet"
+    href="{{url_for('static',filename='css/index.css')}}"
+  />
+  {% endblock %}
+
+  <div class="col-md-12 navbar bg-dark p-3">
+    <div class="nav-logo">
+      <a class="navbar-brand text-white ml-3" href="/"> Letewaa </a>
+    </div>
+
+    <ul class="nav mr-4">
+      <li><a class="text-white" href="/">Home</a></li>
+    </ul>
+  </div>
+</div>
