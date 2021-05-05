@@ -1,0 +1,7 @@
+{% macro displaySupplierList(supplier_list) %} {% for supplier in supplier_list
+%}
+<div class="col-md-6 mt-5">
+  <div class="supplier-card">{{supplier.username}}</div>
+</div>
+
+{% endfor %} {% endmacro %}
