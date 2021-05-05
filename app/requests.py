@@ -23,9 +23,9 @@ def get_weather():
     
     
     
-get_weather()
+# get_weather()
 
-def get_weather_inforamtion(id):
+def get_weather_information(id):
     if id == 800:
         return( 'photos/animated/day.svg','With the clear skies a cold milkshake will have you shaking the right way as you pull your dance moves')
     if id == 801:
