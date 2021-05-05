@@ -67,10 +67,89 @@
 
 #b-color{
     flex: 50%;
-    background-color: red;
+    background-color: #EE1919;
 }
 
 #a-color{
     flex: 50%;
     background-color: white;
+}
+
+#weather-image img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    float:right;
+}
+#weather-image p{
+    position: absolute;
+    float: left;
+    margin-top: 10px;
+    width: 250px;
+    text-align: center;
+    margin-left: 350px;
+}  
+
+#weather-section{
+    margin: 30px;
+    margin-left: 50px;
+    margin-top: 80px;
+}
+#weather-image{
+    box-sizing: border-box;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    text-align: center;
+    justify-content: center; 
+    margin-right: 160px;
+}
+.card{
+    background-color: #EE1919;
+    color:white;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 150px;
+    font-size: 22px;
+}
+
+.card-text{
+    margin-top: 25px;
+}
+
+.card-text a{
+    color: white;
+}
+
+#pizza-places{
+    margin-top: 40px;
+}
+
+#pizza-places h4{
+    text-align: center;
+}
+
+.card-text p{ 
+    text-align: center;
+    align-items: center;
+}
+
+#business-name .card{
+    background-color: #EE1919;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    height: 60px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#business-name .card p{
+    text-align: center;
+    margin-top: 15px;
+}
+
+.btn{
+    background-color: #EE1919;
 }
