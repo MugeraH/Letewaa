@@ -198,3 +198,14 @@
   margin-right: 10px;
   font-size: 20px;
 }
+.supplier-container {
+  width: 100%;
+  background-color: red;
+  height: 150px;
+  width: 200px;
+  margin: 50px;
+  display: flex;
+}
+
+.supplier-card {
+}

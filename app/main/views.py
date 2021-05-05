@@ -25,12 +25,14 @@ def user_page():
     Get redirected to suppliers-route to view suppliers catalogue
     
     """
+    
+    supplier_list = Seller.query.all()
     weather_data = get_weather()
    
     weather_icon = get_weather_information(weather_data[0])[0]
     suggestion = get_weather_information(weather_data[0])[1]
    
-    return render_template('user/user_page.html',suggestion=suggestion,weather_icon=weather_icon)
+    return render_template('user/user_page.html',supplier_list=supplier_list,weather_data=weather_data,suggestion=suggestion,weather_icon=weather_icon)
 
 @main.route('/supplier-products/<int:supplier_id>')
 @login_required
@@ -42,6 +44,8 @@ def supplier_products(supplier_id):
 
     
     """
+  
+  
     supplier_product_list
    
     return render_template('supplier_products.html' ,supplier_products_list=supplier_products_list)
