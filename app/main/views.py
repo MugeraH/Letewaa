@@ -1,8 +1,8 @@
 from flask import render_template,request,redirect,url_for,request,redirect,url_for
 from . import main
-from ..request import get_weather,get_weather_information
+from ..requests import get_weather,get_weather_information
 from flask_login import login_required,current_user
-# from .forms import UpdateProfile,BlogForm,CommentsForm,UpdateBlog,SubscribersForm
+
 from .. import db,photos
 # from ..email import mail_message
 from ..models import Orders,Seller,User,Product
@@ -158,7 +158,7 @@ def update_pic(uname):
 
 @main.route('/supplier/<uname>/update',methods = ['GET','POST'])
 @login_required
-def update_profile(uname):
+def update_supplier_profile(uname):
     user = Supplier.query.filter_by(username = uname).first()
     if user is None:
         abort(404)
@@ -177,7 +177,7 @@ def update_profile(uname):
 
 @main.route('/supplier/<uname>/update/pic',methods= ['POST'])
 @login_required
-def update_pic(uname):
+def update_supplier_pic(uname):
     user = Supplier.query.filter_by(username = uname).first()
     if 'photo' in request.files:
         filename = photos.save(request.files['photo'])
