@@ -1,0 +1,42 @@
+{% extends 'base.html'%} {% block styles%} {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='/css/index.css')}}" />
+{% endblock %}{% block content%}
+
+<div class="container">
+    <div class="cart-box">
+        <div class="row">
+            <div class="col-md-8" id="order-description">
+                <div class="order-img">
+                    <div>
+                        <img src="Images/Images/Sunset in the Park.jpeg">
+                    </div>
+                    <div class="order-details">
+                        <p>Pizza Name:</p>
+                        <p>Pizza Amount: </p>
+                        <p>Pizza Price: </p>
+                    </div>
+                </div>
+                <div class="order-img">
+                    <div>
+                        <img src="Images/Images/Sunset in the Park.jpeg">
+                    </div>
+                    <div class="order-details">
+                        <p>Pizza Name: </p>
+                        <p>Pizza Amount: </p>
+                        <p>Pizza Price: </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 totals">
+                <h5>TOTAL</h5>
+                <br>
+                <p>Kshs. 2,000</p>
+                <br>
+                <button type="submit" class="btn btn">Make Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
