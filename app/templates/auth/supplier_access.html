@@ -1,63 +1,64 @@
-{% extends "base.html" %}
-
-{% block content %}
-    <main class="container signup-section">
-        <div class="section-content">
-            <h2>Create an account</h2>
-
-            <form method="POST" action="/signup">
-                {{ form.hidden_tag() }}
-
-                <div class="form-group">
-                    {{ form.first_name.label }}
-
-                    {% if form.first_name.errors %}
-                        {% for error in form.first_name.errors %}
-                            <p>{{ error }}</p>
-                        {% endfor %}
-                    {% endif %}
-
-                    {{ form.first_name }}
-                </div>
-
-                <div class="form-group">
-                    {{ form.last_name.label }}
-
-                    {% if form.last_name.errors %}
-                        {% for error in form.last_name.errors %}
-                            <p>{{ error }}</p>
-                        {% endfor %}
-                    {% endif %}
-
-                    {{ form.last_name }}
-                </div>
-
-                <div class="form-group">
-                    {{ form.email.label }}
-
-                    {% if form.email.errors %}
-                        {% for error in form.email.errors %}
-                            <p>{{ error }}</p>
-                        {% endfor %}
-                    {% endif %}
-
-                    {{ form.email }}
-                </div>
-
-                <div class="form-group">
-                    {{ form.password.label }}
-
-                    {% if form.password.errors %}
-                        {% for error in form.password.errors %}
-                            <p>{{ error }}</p>
-                        {% endfor %}
-                    {% endif %}
-
-                    {{ form.password }}
-                </div>
-
-                {{ form.submit(class="btn-primary") }}
-            </form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app/static/css/style.css">
+    <title>Letewaa pizza</title>
+</head>
+<body>
+    
+<h2> Supplier Sign in/up Form</h2>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form action="#">
+            <h1>Create Account</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your email for registration</span>
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button>Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form action="#">
+            <h1>Sign in</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your account</span>
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <a href="#">Forgot your password?</a>
+            <button>Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
         </div>
-    </main>
-{% endblock %}
+    </div>
+</div>
+
+<footer>
+    <p>Copyright Leteawaa 2021</p>
+</footer>
+<script src="app/static/main.js"></script>
+</body>
+</html>
