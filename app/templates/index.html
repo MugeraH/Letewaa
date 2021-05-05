@@ -2,6 +2,31 @@
 <link rel="stylesheet" href="{{url_for('static',filename='/css/index.css')}}" />
 {% endblock %}{%block content%}
 
-<h3 class="text-success">main page</h3>
+<div class="container-fluid">
+    <form>
+        <p>Choose Your Category:</p>
+        <select>
+            <option>Customer</option>
+            <option>Seller</option>
+        </select>
+    </form>
+    
+    <div id="image-landing">
+        <!-- <img src="Images/ldpage.jpeg" id="ldpage"> -->
+        <p id="order-text">Make an Order
+            <br>
+            Let Us Bring it to you
+        </p>
+    </div>
+    <div id="supplier-landing-page">
+        <div id="landing-page-img">
+            <img src="../static/photos/landingpage1.jpg" href="pizza image">
+        </div>
+        <div id="landing-page-text">
+            <p id="text-order">Looking for your better half?</p>
+            <button type="submit" class="btn btn-danger">Make Order</button>
+        </div>
+    </div>   
+</div>
 
 {%endblock%}

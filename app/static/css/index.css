@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+*{
+    box-sizing: border-box;
+    font-family: 'Pacifico', cursive;
+
+}
+
+#supplier-landing-page{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+}
+
+#landing-page-img{
+    float: right;
+}
+
+#landing-page-text{
+    position: absolute;
+    float: left;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 30px;
+    width: 250px;
+    text-align: center;
+    margin-right: 500px;
+}
+
+#image-landing{
+    background-image: url("/static/photos/Images/ldpage.jpeg");
+    height: 500px;
+    background-position: center;
+    background-size: cover;
+}
+
+#order-text{
+    font-size: 50px;
+    text-align: center;
+    padding-top: 200px;
+    color: white;
+}
+
+.card{
+    height: 200px;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    border: black solid 1px;
+}
+
+#s-text{
+   /* bottom: 50%; */
+   padding-top: 150px;
+   padding-left: 20px;
+   color: white;
+}
+
+#c-text{
+    padding-top: 10px;
+    padding-left: 10px;
+    color:white;
+}
+
+#b-color{
+    flex: 50%;
+    background-color: red;
+}
+
+#a-color{
+    flex: 50%;
+    background-color: white;
+}
