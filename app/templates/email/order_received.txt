@@ -1,0 +1,3 @@
+Hello {user.username}
+
+{seller.username} has received your order and are currently processing it. You will be notified of any updates with regards to your order.
