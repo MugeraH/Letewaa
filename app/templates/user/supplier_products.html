@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{% import 'macros.html' as macro%} {% block styles%} {{
+super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+{% endblock %}{% block content %}
+<!-- Create form to populate the db -->
+
+<div class="container-fluid">
+  <div class="text-center"><h3>{{seller.username}}</h3></div>
+  <div class="text-center"><h3>Cart items: {{cart_items_count}}</h3></div>
+  <!-- <div class="product-title">
+  
+
+    <div class="cart-count">{{cart_items_count}}</div>
+  </div> -->
+
+  <div class="row products">
+    {{ macro.displaySupplierProductsList(supplier_products_list)}}
+  </div>
+</div>
+
+{% endblock %}

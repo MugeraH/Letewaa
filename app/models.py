@@ -90,14 +90,18 @@ class Orders(db.Model):
         return f'Orders{self.pizza_name}'
     
 class Cart(db.Model):
-    __tablename__="Cart"
+    __tablename__="cart"
     id=db.Column(db.Integer, primary_key=True)
     product_id=db.Column(db.Integer, db.ForeignKey('products.id',ondelete='SET NULL'),nullable = True)
     user_id=db.Column(db.Integer, db.ForeignKey("users.id",ondelete='SET NULL'),nullable = True)
+    
+    def add_item_to_cart(self):      
+        db.session.add(self)
+        db.session.commit()
      
     def __repr__(self):
         
-        return f'Cart{self.pizza_name}'
+        return f'Cart{self.id}'
      
     
 
