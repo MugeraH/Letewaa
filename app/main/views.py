@@ -44,11 +44,37 @@ def supplier_products(supplier_id):
 
     
     """
+    seller = Seller.query.filter_by(id=supplier_id).first()
+    product = Product.query.filter_by(id=supplier_id).first()
+    
+    cart_items = Cart.query.filter_by(user_id=current_user._get_current_object().id).all()
+    print(len(cart_items))
+    cart_items_count = len(cart_items)
   
   
-    supplier_product_list
+    supplier_products_list = Product.query.filter_by(seller_id=supplier_id)
    
-    return render_template('supplier_products.html' ,supplier_products_list=supplier_products_list)
+    return render_template('user/supplier_products.html' ,supplier_products_list=supplier_products_list,seller=seller,cart_items_count=cart_items_count)
+
+
+
+@main.route('/add_to_cart/<int:product_id>')
+@login_required
+def add_to_cart(product_id):
+    product = Product.query.filter_by(id=product_id).first()
+   
+    product_id = product_id
+    user_id = current_user
+    cart_item = Cart(product_id=product_id,user_id=current_user._get_current_object().id)
+    cart_item.add_item_to_cart()
+    print(cart_item)
+    
+   
+   
+    return redirect(url_for('.supplier_products', supplier_id = product.seller_id))
+
+
+
 
 
 
