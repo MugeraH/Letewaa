@@ -1,0 +1,3 @@
+Hello {seller.username}
+
+{user.username} has placed an order to your store. Accept or decline the order to notify them on the status of their order. 
