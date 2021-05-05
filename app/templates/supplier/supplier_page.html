@@ -1,18 +1,19 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <div id="supplier-landing-page">
-    <div id="landing-page-text">
-        <p>Looking for your better half?</p>
-        <button type="submit" class="btn btn-success">Make Order</button>
-    </div>
-    <div id="landing-page-img">
-        <img src="../../static/photos/Images/landingpage.jpg" href="pizza image">
-    </div>   
+  <div id="landing-page-text">
+    <p>Looking for your better half?</p>
+    <button type="submit" class="btn btn-success">Make Order</button>
+  </div>
+  <div id="landing-page-img">
+    <img src="../../static/photos/Images/landingpage.jpg" href="pizza image" />
+  </div>
 
+  <!-- <a
+    href="{{url_for('main.update_products')}}"
+    class="btn btn-outline-success mt-5"
+    >Add Products</a
+  > -->
 </div>
-
-
 
 {% endblock %}

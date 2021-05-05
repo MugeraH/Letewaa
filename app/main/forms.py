@@ -1,17 +1,17 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField, FormField,ValidationError
-from wtforms.validators import DataRequired, Email, Length
-
+from wtforms import StringField, PasswordField, TextAreaField,SubmitField, SelectField, FormField,ValidationError
+from wtforms.validators import Required, Email, Length
+from wtforms import FileField
 
 CATEGORY_CHOICES = [('Large', 'Large'),('Medium', 'Medium'),('Small', 'Small')]
 
 
 class OrderForm(FlaskForm):
     # pizza_name = StringField("What type of pizza would you like?", validators=[DataRequired("Please enter a pizza.")])
-    pizza size = SelectField('Click to select size',choices=CATEGORY_CHOICES,validators=[Required()])
+    pizza_size = SelectField('Click to select size',choices=CATEGORY_CHOICES,validators=[Required()])
     Amount=StringField("Amount",validators=[Required()])
       
-    submit = SubmitField("Place Order",validators=[Required()])
+    submit = SubmitField("Add Product",validators=[Required()])
    
 
 
@@ -30,10 +30,13 @@ class SellerRegisterForm(FlaskForm):
 
 class ProductForm(FlaskForm):
     product_name = StringField("Name",validators=[Required()])
-    product_description = TextAreaField("Description",validators=[Required()])
-    product_id=StringField("Product",validators=[Required()])
+    description = TextAreaField("Description",validators=[Required()])
     product_picture=FileField("UploadImage",validators=[Required()])
+    submit = SubmitField("Place Order",validators=[Required()])
   
 
 
 
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about you.',validators = [Required()])
+    submit = SubmitField('Submit')

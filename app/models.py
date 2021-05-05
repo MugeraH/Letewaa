@@ -66,6 +66,10 @@ class Product(db.Model):
     seller_id=db.Column(db.Integer, db.ForeignKey('sellers.id',ondelete='SET NULL'),nullable = True)
     orders=db.relationship("Orders", backref="products", lazy="dynamic")
     cart=db.relationship("Cart", backref="products", lazy="dynamic")
+    
+    def save_new_product(self):
+        db.session.add(self)
+        db.session.commit()
 
     def __repr__(self):
         return f'Product{self.product}'
