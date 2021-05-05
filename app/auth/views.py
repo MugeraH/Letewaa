@@ -1,64 +1,46 @@
-from flask import Flask,request,render_template
-from forms import Signupform, LoginForm, Orderform
-from logger import  logger  
+from flask import render_template,redirect,url_for, flash,request
+from flask_login import login_user,logout_user,login_required
+from ..models import Seller,User
+from .forms import RegistrationForm, LoginForm
+from .. import db
+from . import auth
+from ..email import mail_message
 
-pp = Flask(__name__)
-
-app.app_context().push()
-
-
-@app.route('/')
-def index():
-    if "email" in session:
-        logger.info(session["email"] + " : Accessed /index")
-        return render_template("index.html", user=session["email"].split("@")[0])
-    else:
-        logger.info("Guest : Accessed /index")
-        return render_template("index.html", user="Guest")
-
-
-@app.route("/signup", methods=["GET", "POST"])
-def signup():
-    if "email" in session:
-        logger.info(session["email"] + " : Redirecting to /index from /signup")
-        return redirect(url_for("index"))
-
-    form = SignupForm()
-
-    if request.method == "POST":
-        if form.validate() == False:
-            logger.info("Guest : Submitted a bad signup form.")
-            return render_template("signup.html", form=form)
-        else:
-            session["email"] = form.email.data
-            logger.info(session["email"] + " : Successfully signed up - redirecting to /index")
-            return redirect(url_for("index"))
-    elif request.method == "GET":
-        logger.info("Guest : Accessed /signup")
-        return render_template("signup.html", form=form)
-
-
-@app.route("/login", methods=["GET", "POST"])
+@auth.route('/login',methods=['GET','POST'])
 def login():
-    if "email" in session:
-        logger.info(session["email"] + " : Redirecting to /index from /login")
-        return redirect(url_for("index"))
+    login_form = LoginForm()
+    if login_form.validate_on_submit():
+        user = User.query.filter_by(email = login_form.email.data).first()
+        if user is not None and user.verify_password(login_form.password.data):
+            login_user(user,login_form.remember.data)
+            return redirect(request.args.get('next') or url_for('main.user_page'))
 
-    form = LoginForm()
+        flash('Invalid username or Password')
 
-    if request.method == "POST":
-        if form.validate() == False:
-            logger.info("Guest : Submitted a bad login form.")
-            return render_template("login.html", form=form)
-        else:
-            session["email"] = form.email.data
-            logger.info(session["email"] + " : Successfully logged in - redirecting to /index")
-            return redirect(url_for("index"))
-    elif request.method == "GET":
-        logger.info("Guest : Accessed /login")
-        return render_template("login.html", form=form)
+ 
+    return render_template('auth/login.html',login_form = login_form,)
+
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("main.index"))
 
 
-@
-if __name__ == '__main__':
-    app.run(debug=True)
+
+@auth.route('/register',methods = ["GET","POST"])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user =User(email = form.email.data, username = form.username.data,role=form.role.data,password =form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        
+        mail_message("Welcome to Letewaa","email/welcome_user",user.email,user=user)
+        
+        return redirect(url_for('auth.login'))
+        title = "New Account"
+    return render_template('auth/register.html',registration_form = form)
+
+
+

@@ -153,3 +153,7 @@
 .btn{
     background-color: #EE1919;
 }
+
+.nav-link {
+  margin-right: 10px;
+}

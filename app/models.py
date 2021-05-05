@@ -1,18 +1,40 @@
 from . import db
+from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime
+from flask_login import UserMixin
+from . import login_manager
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
-class User(db.Model):
+class User(db.Model,UserMixin):
     __tablename__='users'
 
     id=db.Column(db.Integer, primary_key=True)
     username=db.Column(db.String)
     email=db.Column(db.String)
-    password=db.Column(db.String)
+    pass_secure = db.Column(db.String(255))
     phone=db.Column(db.String)
     bio=db.Column(db.String)
-    profile_picture=db.Column(db.String)
-    user=db.relationship("Orders", backref="users", lazy="dynamic")
+    profile_picture_path=db.Column(db.String)
+    orders =db.relationship("Orders", backref="users", lazy="dynamic")
+    cart =db.relationship("Cart", backref="users", lazy="dynamic")
+    
+    @property
+    def password(self):
+        raise AttributeError('You cannot read the password attribute')
+    
+    @password.setter
+    def password(self,password):
+        self.pass_secure = generate_password_hash(password)
+        
+    def verify_password(self,password):
+        return check_password_hash(self.pass_secure,password)
+        
+
+    def __repr__(self):
+        return f'Writer {self.username}'
 
 
     def __repr__(self):
@@ -24,12 +46,12 @@ class Seller(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     username=db.Column(db.String)
     bio=db.Column(db.String)
-    profile_picture=db.Column(db.String)
+    profile_picture_path=db.Column(db.String)
     email=db.Column(db.String)
     password=db.Column(db.String)
     phone=db.Column(db.String)
     products=db.relationship("Product",backref="sellers", lazy="dynamic")
-    sellers=db.relationship("Orders", backref="sellers", lazy="dynamic")
+    orders =db.relationship("Orders", backref="sellers", lazy="dynamic")
 
     def __repr__(self):
         return f'Seller{self.username}'
@@ -41,8 +63,9 @@ class Product(db.Model):
     product_name=db.Column(db.String)
     product_picture=db.Column(db.String)
     description=db.Column(db.String)
-    seller_id=db.Column(db.Integer, db.ForeignKey('sellers.id'))
+    seller_id=db.Column(db.Integer, db.ForeignKey('sellers.id',ondelete='SET NULL'),nullable = True)
     orders=db.relationship("Orders", backref="products", lazy="dynamic")
+    cart=db.relationship("Cart", backref="products", lazy="dynamic")
 
     def __repr__(self):
         return f'Product{self.product}'
@@ -54,12 +77,23 @@ class Orders(db.Model):
     pizza_name=db.Column(db.String)
     pizza_size=db.Column(db.String)
     price=db.Column(db.Integer)
-    product_id=db.Column(db.Integer, db.ForeignKey('products.id'))
+    product_id=db.Column(db.Integer, db.ForeignKey('products.id',ondelete='SET NULL'),nullable = True)
     time=db.Column(db.DateTime(),default=datetime.utcnow)
-    user_id=db.Column(db.Integer, db.ForeignKey("users.id"))
-    seller_id=db.Column(db.Integer, db.ForeignKey('sellers.id'))
+    user_id=db.Column(db.Integer, db.ForeignKey("users.id",ondelete='SET NULL'),nullable = True)
+    seller_id=db.Column(db.Integer, db.ForeignKey('sellers.id',ondelete='SET NULL'),nullable = True)
 
     def __repr__(self):
         return f'Orders{self.pizza_name}'
+    
+class Cart(db.Model):
+    __tablename__="Cart"
+    id=db.Column(db.Integer, primary_key=True)
+    product_id=db.Column(db.Integer, db.ForeignKey('products.id',ondelete='SET NULL'),nullable = True)
+    user_id=db.Column(db.Integer, db.ForeignKey("users.id",ondelete='SET NULL'),nullable = True)
+     
+    def __repr__(self):
+        
+        return f'Cart{self.pizza_name}'
+     
     
 
