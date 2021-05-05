@@ -2,11 +2,10 @@ from flask import render_template,request,redirect,url_for,request,redirect,url_
 from . import main
 from ..requests import get_weather,get_weather_information
 from flask_login import login_required,current_user
-
 from .. import db,photos
-# from ..email import mail_message
-from ..models import Orders,Seller,User,Product
-from werkzeug.utils import secure_filename
+from ..email import mail_message
+from ..models import Orders,Seller,User,Product,Cart
+
 
 
 
@@ -28,9 +27,9 @@ def user_page():
     weather_data = get_weather()
    
     weather_icon = get_weather_information(weather_data[0])[0]
-    suggestion = get_weather_inforamtion(weather_data[0])[1]
+    suggestion = get_weather_information(weather_data[0])[1]
    
-    return render_template('user_page.html',suggestion=suggestion,weather_icon=weather_icon)
+    return render_template('user/user_page.html',suggestion=suggestion,weather_icon=weather_icon)
 
 @main.route('/supplier-products/<int:supplier_id>')
 @login_required

@@ -1,155 +1,200 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-*{
-    box-sizing: border-box;
-    font-family: 'Pacifico', cursive;
-
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: "Pacifico", cursive;
 }
 
-#supplier-landing-page{
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100vh;
+#supplier-landing-page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
 }
 
-#landing-page-img{
-    float: right;
+#landing-page-img {
+  float: right;
 }
 
-#landing-page-text{
-    position: absolute;
-    float: left;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 30px;
-    width: 250px;
-    text-align: center;
-    margin-right: 500px;
+#landing-page-text {
+  position: absolute;
+  float: left;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 30px;
+  width: 250px;
+  text-align: center;
+  margin-right: 500px;
 }
 
-#image-landing{
-    background-image: url("/static/photos/Images/ldpage.jpeg");
-    height: 500px;
-    background-position: center;
-    background-size: cover;
+#image-landing {
+  background-image: url("/static/photos/Images/ldpage.jpeg");
+  height: 500px;
+  background-position: center;
+  background-size: cover;
 }
 
-#order-text{
-    font-size: 50px;
-    text-align: center;
-    padding-top: 200px;
-    color: white;
+#order-text {
+  font-size: 50px;
+  text-align: center;
+  padding-top: 200px;
+  color: white;
 }
 
-.card{
-    height: 200px;
-    width: 200px;
-    display: flex;
-    flex-direction: row;
-    border: black solid 1px;
+.card {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  border: black solid 1px;
 }
 
-#s-text{
-   /* bottom: 50%; */
-   padding-top: 150px;
-   padding-left: 20px;
-   color: white;
+#s-text {
+  /* bottom: 50%; */
+  padding-top: 150px;
+  padding-left: 20px;
+  color: white;
 }
 
-#c-text{
-    padding-top: 10px;
-    padding-left: 10px;
-    color:white;
+#c-text {
+  padding-top: 10px;
+  padding-left: 10px;
+  color: white;
 }
 
-#b-color{
-    flex: 50%;
-    background-color: #EE1919;
+#b-color {
+  flex: 50%;
+  background-color: #ee1919;
 }
 
-#a-color{
-    flex: 50%;
-    background-color: white;
+#a-color {
+  flex: 50%;
+  background-color: white;
 }
 
-#weather-image img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    float:right;
+#weather-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  float: right;
 }
-#weather-image p{
-    position: absolute;
-    float: left;
-    margin-top: 10px;
-    width: 250px;
-    text-align: center;
-    margin-left: 350px;
-}  
-
-#weather-section{
-    margin: 30px;
-    margin-left: 50px;
-    margin-top: 80px;
-}
-#weather-image{
-    box-sizing: border-box;
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    text-align: center;
-    justify-content: center; 
-    margin-right: 160px;
-}
-.card{
-    background-color: #EE1919;
-    color:white;
-    text-align: center;
-    align-items: center;
-    border-radius: 10px;
-    height: 150px;
-    font-size: 22px;
+#weather-image p {
+  position: absolute;
+  float: left;
+  margin-top: 10px;
+  width: 250px;
+  text-align: center;
+  margin-left: 350px;
 }
 
-.card-text{
-    margin-top: 25px;
+#weather-section {
+  margin: 30px;
+  margin-left: 50px;
+  margin-top: 80px;
+}
+#weather-image {
+  box-sizing: border-box;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-right: 160px;
+}
+.card {
+  background-color: #ee1919;
+  color: white;
+  text-align: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 150px;
+  font-size: 22px;
 }
 
-.card-text a{
-    color: white;
+.card-text {
+  margin-top: 25px;
 }
 
-#pizza-places{
-    margin-top: 40px;
+.card-text a {
+  color: white;
 }
 
-#pizza-places h4{
-    text-align: center;
+#pizza-places {
+  margin-top: 40px;
 }
 
-.card-text p{ 
-    text-align: center;
-    align-items: center;
+#pizza-places h4 {
+  text-align: center;
 }
 
-#business-name .card{
-    background-color: #EE1919;
-    margin-bottom: 30px;
-    margin-top: 50px;
-    height: 60px;
-    color: white;
-    text-align: center;
-    border-radius: 10px;
+.card-text p {
+  text-align: center;
+  align-items: center;
 }
 
-#business-name .card p{
-    text-align: center;
-    margin-top: 15px;
+#business-name .card {
+  background-color: #ee1919;
+  margin-bottom: 30px;
+  margin-top: 50px;
+  height: 60px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
 }
 
-.btn{
-    background-color: #EE1919;
+#business-name .card p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.btn {
+  background-color: #ee1919;
+}
+
+.card-wrapper {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user_select {
+  height: 250px;
+  width: 250px;
+
+  margin: 20px 20px 80px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_select a {
+  background-color: rgb(172, 21, 21);
+  padding: 100px 70px;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 24px;
+  transition: all 0.5s ease;
+}
+
+.user_select a:hover {
+  padding: 110px 80px;
+  font-size: 28px;
+}
+
+.navbar {
+  background-color: #d43a2f;
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
+
+.nav-link {
+  margin-right: 10px;
+  font-size: 20px;
 }
