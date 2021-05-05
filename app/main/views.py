@@ -27,9 +27,9 @@ def user_page():
     weather_data = get_weather()
    
     weather_icon = get_weather_information(weather_data[0])[0]
-    suggestion = get_weather_inforamtion(weather_data[0])[1]
+    suggestion = get_weather_information(weather_data[0])[1]
    
-    return render_template('user_page.html',suggestion=suggestion,weather_icon=weather_icon)
+    return render_template('user/user_page.html',suggestion=suggestion,weather_icon=weather_icon)
 
 @main.route('/supplier-products/<int:supplier_id>')
 @login_required

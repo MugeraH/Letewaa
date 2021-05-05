@@ -6,19 +6,21 @@
   />
   {% endblock %}
 
-  <div class="col-md-12 navbar p-3">
+  <div class="col-md-12 navbar p-3 mb-5">
     <div class="nav-logo">
       <a class="navbar-brand text-white ml-3" href="/"> Letewaa </a>
     </div>
 
     <ul class="nav mr-4">
       <li>
-        <a class="text-white nav-link" href="/" style="margin-right: 20px">Home</a>
+        <a class="text-white nav-link" href="/" style="margin-right: 20px"
+          >Home</a
+        >
       </li>
       {% if current_user.is_authenticated %}
-      <li class="text-white nav-link" style="color: white; padding: 15px">
-        {{current_user.username}}
-      </li>
+      <li class="text-white nav-link">{{current_user.username}}</li>
+      <li class="text-white nav-link"> <a class="text-white nav-link" href="{{url_for('main.profile',uname=current_user.username)}}"
+          >Profile</a</li>
       <li>
         <a class="text-white nav-link" href="{{url_for('auth.logout')}}"
           >Sign out</a
@@ -28,6 +30,10 @@
       <li>
         <a class="text-white nav-link" href="{{url_for('auth.login')}}"
           >Sign in</a
+        >
+          
+        <a class="text-white nav-link" href="{{url_for('auth.register')}}"
+          >Sign Up</a
         >
       </li>
       {%endif%}
