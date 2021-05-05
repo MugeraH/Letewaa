@@ -5,6 +5,7 @@ from flask_login import login_required,current_user
 from .. import db,photos
 from ..email import mail_message
 from ..models import Orders,Seller,User,Product,Cart
+from .forms import ProductForm,UpdateProfile
 
 
 
@@ -106,16 +107,30 @@ def supplier_confirmation():
    
     return render_template('supplier_confirmation.html')
 
-@main.route('/update-product/<int:seller_id>')
-@login_required
-def update_products(seller_id):
+@main.route('/update-product/', methods=["GET", "POST"])
+# @login_required
+def update_products():
+   
     """
     Supplier can update their products
     products update form
     add_products where supplier id = current user id
     """
+    form = ProductForm()
+    
+    if form.validate_on_submit():
+        product_name = form.product_name.data
+        description = form.description.data
+        filename = photos.save(form.product_picture.data)
+        path = f'photos/{filename}'
+        seller_id = current_user
+        new_product_object = Product(product_name=product_name,description=description,product_picture = path,seller_id=current_user._get_current_object().id)
+        
+        new_product_object.save_new_product()
+        
+        
    
-    return render_template('update_products.html')
+    return render_template('supplier/update_product.html',form=form)
 
 
 
@@ -139,7 +154,7 @@ def update_profile(uname):
 
         return redirect(url_for('.profile',uname=user.username))
 
-    return render_template('profile/update.html',form =form)
+    return render_template('profile/update_profile.html',form =form)
 
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
