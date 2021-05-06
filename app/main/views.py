@@ -100,11 +100,13 @@ def user_confirmation():
     Inform user that their order has been sent and send notification to supplier of a
     new order, also thank the user 
     """
+    
+    user = User.query.filter_by(id=current_user._get_current_object().id).first()
     db.session.query(Cart).delete()
     db.session.commit()
-    print("hughes")
    
-    return render_template('user/confirmation_page.html')
+   
+    return render_template('user/confirmation_page.html',user=user)
 
 
 
