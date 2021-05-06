@@ -1,4 +1,6 @@
 import urllib.request,json
+from datetime import datetime
+import math
 
 def get_weather():
     '''
@@ -76,11 +78,23 @@ def get_weather_information(id):
 
 
 
-
-
-
-
-
-
-
     
+def get_days(order_dateCreated):
+    createdDate = datetime.fromisoformat(article_dateCreated[:-1])
+    currentDate = datetime.now()
+    days  = math.floor((( currentDate - createdDate ).seconds) / 86400)    
+                     
+    return days
+def get_hours(order_dateCreated):
+    createdDate = datetime.fromisoformat(article_dateCreated[:-1])
+    currentDate = datetime.now()
+    hours  = math.floor((( currentDate - createdDate ).seconds) / 3600)  
+                     
+    return hours
+def get_minutes(order_dateCreated):
+    createdDate = datetime.fromisoformat(article_dateCreated[:-1])
+    currentDate = datetime.now()
+    min = math.floor((( currentDate - createdDate ).seconds) % 3600)
+    minutes  = math.floor(min / 60)
+                     
+    return minutes
