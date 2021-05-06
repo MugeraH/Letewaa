@@ -4,7 +4,7 @@ from wtforms.validators import Required,Email,EqualTo
 from ..models import User, Seller
 
 
-# CATEGORY_CHOICES = [('User', 'User'),('Supplier', 'Supplier')]
+
 
 class BuyerLoginForm(FlaskForm):
     email = StringField('Your Email Address',validators=[Required(),Email()])
@@ -16,7 +16,9 @@ class BuyerLoginForm(FlaskForm):
 class BuyerRegistrationForm(FlaskForm):
     email = StringField('Your Email Address',validators=[Required(),Email()])
     username = StringField('Enter your username',validators = [Required()])
-    # role = SelectField('Click to select role',choices=CATEGORY_CHOICES,validators=[Required()])
+
+    usertype = SelectField('User Type', choices = [('sellers', 'sellers'),('buyers', 'buyers')], validators=[Required()])
+
     password = PasswordField('Password',validators = [Required(), EqualTo('password_confirm',message = 'Passwords must match')])
     password_confirm = PasswordField('Confirm Passwords',validators = [Required()])
     submit = SubmitField('Sign Up')

@@ -25,6 +25,7 @@ class User(db.Model,UserMixin):
     profile_picture_path=db.Column(db.String)
     orders =db.relationship("Orders", backref="users", lazy="dynamic")
     cart =db.relationship("Cart", backref="users", lazy="dynamic")
+ 
     
     @property
     def password(self):
@@ -35,8 +36,11 @@ class User(db.Model,UserMixin):
         self.pass_secure = generate_password_hash(password)
         
     def verify_password(self,password):
+
         return check_password_hash(self.pass_secure,password)
 
+
+   
     def __repr__(self):
         return f'User{self.username}'
 
@@ -85,6 +89,7 @@ class Product(db.Model):
     def __repr__(self):
         return f'Product{self.product}'
 
+
 class Orders(db.Model):
     __tablename__="orders"
 
@@ -92,10 +97,16 @@ class Orders(db.Model):
     pizza_name=db.Column(db.String)
     pizza_size=db.Column(db.String)
     price=db.Column(db.Integer)
+    isAccepted=db.Column(db.Boolean,default=False, server_default="false")
     product_id=db.Column(db.Integer, db.ForeignKey('products.id',ondelete='SET NULL'),nullable = True)
     time=db.Column(db.DateTime(),default=datetime.utcnow)
     user_id=db.Column(db.Integer, db.ForeignKey("users.id",ondelete='SET NULL'),nullable = True)
     seller_id=db.Column(db.Integer, db.ForeignKey('sellers.id',ondelete='SET NULL'),nullable = True)
+    
+    def add_order(self):  
+           
+        db.session.add(self)
+        db.session.commit()
 
     def __repr__(self):
         return f'Orders{self.pizza_name}'
@@ -103,16 +114,27 @@ class Orders(db.Model):
 class Cart(db.Model):
     __tablename__="cart"
     id=db.Column(db.Integer, primary_key=True)
+    product=db.Column(db.String)
+    product_picture=db.Column(db.String)
+    product_price = db.Column(db.Integer)
+    amount = db.Column(db.Integer,default=0)
+    size=db.Column(db.String)
+    product_cost = db.Column(db.Integer,default=0)
     product_id=db.Column(db.Integer, db.ForeignKey('products.id',ondelete='SET NULL'),nullable = True)
     user_id=db.Column(db.Integer, db.ForeignKey("users.id",ondelete='SET NULL'),nullable = True)
+
     
     def add_item_to_cart(self):      
         db.session.add(self)
         db.session.commit()
      
+  
+     
     def __repr__(self):
-        
-        return f'Cart{self.id}'
+        return f'Cart{self.product}'
+    
+
+    
      
     
 
