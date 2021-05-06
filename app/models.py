@@ -20,11 +20,7 @@ class User(db.Model,UserMixin):
     profile_picture_path=db.Column(db.String)
     orders =db.relationship("Orders", backref="users", lazy="dynamic")
     cart =db.relationship("Cart", backref="users", lazy="dynamic")
-<<<<<<< HEAD
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-=======
- 
->>>>>>> c352c0d9c33c69d85f4a5bf17b75ed2eca2c6825
     
     @property
     def password(self):

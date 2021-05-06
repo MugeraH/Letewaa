@@ -3,7 +3,7 @@ import os
 class Config:
     pass
     # we change to our own databases 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:moringa@localhost/letewaa'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaschool:moringa@localhost/letewa'
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://githui:Kqcaptain#2@localhost/letewa'
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://mugera:Mugbwo9856@localhost/letewa'
     #SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://githui:Kqcaptain#2@localhost/letewa'
