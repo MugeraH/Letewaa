@@ -5,7 +5,7 @@ from flask_login import login_required,current_user
 from .. import db,photos
 from ..email import mail_message
 from ..models import Orders,Seller,User,Product,Cart
-from .forms import ProductForm,UpdateProfile
+from .forms import ProductForm,UpdateProfile, UpdateProduct
 
 
 
@@ -111,13 +111,13 @@ def user_confirmation(user_id):
 @login_required
 def supplier_page():
     """
-    Supplier logs into their page
+    Supplier is re-directed to their page
     Query orders table by supplier id,and get all active orders
     then click on the orders to go to the orders page
 
     """
    
-    return render_template('supplier_page.html')
+    return render_template('supplier/supplier_page.html')
 
 @main.route('/orders/<int:supplier_id>')
 @login_required
@@ -146,7 +146,7 @@ def update_products():
     products update form
     add_products where supplier id = current user id
     """
-    form = ProductForm()
+    form = UpdateProduct()
     
     if form.validate_on_submit():
         product_name = form.product_name.data

@@ -43,13 +43,7 @@
   color: white;
 }
 
-.card {
-  height: 200px;
-  width: 200px;
-  display: flex;
-  flex-direction: row;
-  border: black solid 1px;
-}
+
 
 #s-text {
   /* bottom: 50%; */
@@ -245,4 +239,37 @@
 
 .cart-count {
   align-self: flex-end;
+}
+
+#supplier-login{
+    background-color: #ee1919;
+    height: 150px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top:60px;
+}
+
+#suppliers-login{
+    background-color: #ee1919;
+    height: 150px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top:60px;
+}
+
+.supplier-name{
+    text-align: center;
+    margin-top: 50px;   
+    font-size: 18px;
+}
+
+
+#supplier-login-text{
+    color: white;
+    size: 16px;
+}
+
+#suppliers-login-text{
+    color: white;
+    size: 16px;
 }
