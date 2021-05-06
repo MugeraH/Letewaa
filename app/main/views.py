@@ -134,9 +134,6 @@ def add_to_cart(product_id):
 
 
 
-
-
-
 @main.route('/orders/<int:user_id>')
 @login_required
 def view_orders(user_id):
@@ -220,8 +217,6 @@ def update_products():
         
    
     return render_template('supplier/update_product.html',form=form)
-
-
 
 
 
