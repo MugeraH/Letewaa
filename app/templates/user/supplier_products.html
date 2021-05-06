@@ -5,9 +5,34 @@ super() }}
 <!-- Create form to populate the db -->
 
 <div class="container-fluid">
-  <div class="text-center"><h3>{{seller.username}}</h3></div>
-  <div class="text-center"><h3>Cart items: {{cart_items_count}}</h3></div>
-  <a href="{{url_for('main.checkout')}}" class="btn btn-danger">Checkout</a>
+  <div class="supplier-wrapper">
+    <div class="product-details">
+      <div class="text-center"><h2>{{seller.username | capitalize()}}</h2></div>
+      <div
+        class="btn-group"
+        role="group"
+        aria-label="Basic mixed styles example"
+      >
+        <div class="price-btn bg-danger">
+          <p class="p-0 m-0">Large</p>
+          <span>Ksh:1000</span>
+        </div>
+        <div class="price-btn bg-warning">
+          <p class="p-0 m-0">Medium</p>
+          <span>Ksh:800</span>
+        </div>
+        <div class="price-btn bg-success">
+          <p class="p-0 m-0">Small</p>
+          <span>Ksh:500</span>
+        </div>
+      </div>
+    </div>
+    <div class="checkout-cart">
+      <div class="text-center"><h3>Cart items: {{cart_items_count}}</h3></div>
+      <a href="{{url_for('main.checkout')}}" class="btn btn-danger">Checkout</a>
+    </div>
+  </div>
+
   <!-- <div class="product-title">
   
 

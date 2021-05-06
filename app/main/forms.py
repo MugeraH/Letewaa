@@ -7,7 +7,7 @@ CATEGORY_CHOICES = [('Large', 'Large'),('Medium', 'Medium'),('Small', 'Small')]
 
 
 class OrderForm(FlaskForm):
-    # pizza_name = StringField("What type of pizza would you like?", validators=[DataRequired("Please enter a pizza.")])
+  
     pizza_size = SelectField('Click to select size',choices=CATEGORY_CHOICES,validators=[Required()])
     Amount=StringField("Amount",validators=[Required()])
       

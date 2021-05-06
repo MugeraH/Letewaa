@@ -3,11 +3,55 @@
   <h3 class="text-center mt-5 mb-0">Checkout Page</h3>
 
   <div class="checkout-container container-fluid">
-    <div class="orders-list">{{ macro.displayCartItems(cart_items)}}</div>
+    <div class="orders-list">
+      {%for item in cart_items%}
+      <div class="checkout-item">
+        <div class="image">
+          <img
+            src="{{url_for('static',filename=item.product_picture)}}"
+            alt=""
+          />
+        </div>
+        <div class="form-container">
+          <div class="form-title">
+            <h4 class="">{{item.product}}</h4>
+
+            <h5>
+              Cost: {%if item.product_cost%} {{item.product_cost}} {%endif%}
+            </h5>
+          </div>
+
+          <div class="form">
+            <form
+              action="{{url_for('main.get_cost',cartItem_id=item.id,product_id=item.product_id)}}"
+              method="POST"
+            >
+              <label for="size">Size</label>
+              <select id="size" class="form-control" name="size">
+                <option value="large">Large</option>
+                <option value="medium">Medium</option>
+                <option value="small">Small</option>
+              </select>
+              <label for="amount">Amount</label>
+              <input
+                id="amount"
+                name="amount"
+                class="form-control"
+                type="number"
+              />
+
+              <button type="submit" class="form-btn mt-3">Calc</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
     <div class="checkout">
-      <h3>Total: 2000</h3>
-      <a href="{{url_for('main.user_confirmation')}}"
-       class="btn btn-danger">Make Order</a>
+      <h3>Total:{{total_cost_value}}</h3>
+      <a href="{{url_for('main.user_confirmation')}}" class="btn btn-danger"
+        >Make Order</a
+      >
     </div>
   </div>
 </div>

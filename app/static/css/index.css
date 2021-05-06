@@ -303,19 +303,41 @@
 }
 
 .checkout-item .image {
-  width: 55%;
+  width: 48%;
   height: 100%;
 }
 .checkout-item .image img {
   height: 100%;
   object-fit: cover;
-  width: 300px;
+  width: 250px;
   margin: 0px auto;
+  border-radius: 15px;
 }
-.checkout-item .form {
-  text-align: center;
-  width: 45%;
+.checkout-item .form-container {
+  width: 55%;
   height: 100%;
+}
+
+.form form {
+  width: 200px;
+  height: 190px;
+  display: block;
+}
+
+.form-title {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 60px;
+}
+
+.form-btn {
+  height: 40px;
+  color: white;
+  background-color: black;
+
+  padding: 6px;
+  border-radius: 5px;
+  margin-top: 5px;
 }
 
 .message {
@@ -329,7 +351,7 @@
 .weather {
   border: 3px solid black;
   width: 30%;
-  margin-left: 70%;
+  margin: 0px auto;
   display: flex;
   border-radius: 20px;
   padding: 10px;
@@ -337,4 +359,29 @@
 
 .weather .image img {
   height: 100px;
+}
+
+.supplier-wrapper {
+  width: 80%;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+}
+.product-details {
+}
+
+.price-btn {
+  width: 95px;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  margin-left: 2px;
+  cursor: pointer;
+}
+.price-btn p {
+  font-size: 26px;
+}
+.price-btn span {
+  font-size: 20px;
 }
