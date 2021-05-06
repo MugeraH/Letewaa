@@ -6,6 +6,7 @@ from .. import db,photos
 from ..email import mail_message
 from ..models import Orders,Seller,User,Product,Cart
 from .forms import ProductForm,UpdateProfile, UpdateProduct
+from ..auth.forms import BuyerRegistrationForm, BuyerLoginForm, SellerLoginForm, SellerRegistrationForm
 
 
 
@@ -15,6 +16,64 @@ def index():
    
     return render_template('index.html')
 
+@main.route('/buyer_login',methods=['GET','POST'])
+def login():
+    login_form = BuyerLoginForm()
+    if login_form.validate_on_submit():
+        user = User.query.filter_by(email = login_form.email.data).first()
+        if user is not None and user.verify_password(login_form.password.data):
+            login_user(user,login_form.remember.data)
+            return redirect(request.args.get('next') or url_for('main.index'))
+
+        flash('Invalid username or Password')
+
+ 
+    return render_template('auth/login.html',login_form = login_form,)
+
+@main.route('/supplier_login',methods=['GET','POST'])
+def logintwo():
+    login_form = SellerLoginForm()
+    if login_form.validate_on_submit():
+        supplier = Supplier.query.filter_by(email = login_form.email.data).first()
+        if supplier is not None and supplier.verify_password(login_form.password.data):
+            login_supplier(supplier,login_form.remember.data)
+            return redirect(request.args.get('next') or url_for('main.supplier_page'))
+
+        flash('Invalid username or Password')
+
+ 
+    return render_template('auth/loginsupplier.html',login_form = login_form,)
+
+
+
+@main.route('/buyer_register',methods = ["GET","POST"])
+def register():
+    form = BuyerRegistrationForm()
+    if form.validate_on_submit():
+        user =User(email = form.email.data, username = form.username.data,password =form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        
+        mail_message("Welcome to Letewaa","email/welcome_user",user.email,user=user)
+        
+        return redirect(url_for('auth.login'))
+        title = "New Account"
+    return render_template('auth/register.html',registration_form = form)
+
+
+@main.route('/supplier_register',methods = ["GET","POST"])
+def registertwo():
+    form = SellerRegistrationForm()
+    if form.validate_on_submit():
+        seller =Seller(email = form.email.data, username = form.username.data,password =form.password.data)
+        db.session.add(seller)
+        db.session.commit()
+        
+        # mail_message("Welcome to Letewaa","email/welcome_user",seller.email,seller=seller)
+        
+        return redirect(url_for('auth.loginsupplier'))
+        title = "New Account"
+    return render_template('auth/registersupplier.html',registration_form = form)
 
 
 @main.route('/user_page')
