@@ -20,11 +20,7 @@ def index():
 @main.route('/user_page')
 @login_required
 def user_page():
-    """
-    Get all the suppliers and list them
-    Get redirected to suppliers-route to view suppliers catalogue
-    
-    """
+  
     
     supplier_list = Seller.query.all()
     weather_data = get_weather()
@@ -69,27 +65,60 @@ def add_to_cart(product_id):
     cart_item.add_item_to_cart()
     print(cart_item)
     
-   
-   
     return redirect(url_for('.supplier_products', supplier_id = product.seller_id))
-
-
-
-
-
 
 @main.route('/checkout')
 @login_required
 def checkout():
-    
+    total_cost=[]
+   
     cart_items= Cart.query.filter_by(user_id =current_user._get_current_object().id ).all()
+    for item in cart_items:
+        total_cost.append(item.product_cost)
+        
+    total_cost_value= sum(total_cost)
+    
+    print(total_cost_value)
+    
+    
    
-   
-   
-  
-   
-    return render_template('user/checkout.html',cart_items=cart_items)
+      
+    return render_template('user/checkout.html',cart_items=cart_items,total_cost_value=total_cost_value)
 
+@main.route('/get_cost/<int:product_id>/<int:cartItem_id>',methods=["POST"])
+def get_cost(product_id,cartItem_id):
+    total_cost=[]
+    product = Product.query.filter_by(id=product_id).first()
+    cart = Cart.query.filter_by(id=cartItem_id).first()
+    cart_items= Cart.query.filter_by(user_id =current_user._get_current_object().id ).all()
+    size = request.form.get("size")
+    amount = request.form.get("amount")
+    
+    if size == "large":
+        print(size)
+        cost = 1000* int(amount)
+        cart.product_cost = cost
+        cart.amount = amount
+        cart.size = size
+        db.session.commit()
+    elif size == "medium":
+        print(size)
+        cost = 800* int(amount)
+        cart.amount = amount
+        cart.size = size
+        cart.product_cost = cost
+        db.session.commit()
+        
+    elif size == "small":
+        print(size)
+        cost = 500* int(amount)
+        cart.amount = amount
+        cart.size = size
+        cart.product_cost = cost
+        db.session.commit()
+         
+    
+    return redirect(url_for('.checkout'))
 
 
 
@@ -102,6 +131,16 @@ def user_confirmation():
     """
     
     user = User.query.filter_by(id=current_user._get_current_object().id).first()
+   
+    cart_items= Cart.query.filter_by(user_id =current_user._get_current_object().id ).all()
+    
+    for item in cart_items:
+        product = Product.query.filter_by(id=item.product_id).first()
+        order_item_object= Orders(pizza_name=item.product,pizza_size=item.size,price=item.product_cost,user_id=current_user._get_current_object().id ,product_id=item.product_id,seller_id=product.seller_id)
+        order_item_object.add_order()
+        
+        
+        
     db.session.query(Cart).delete()
     db.session.commit()
    
