@@ -3,8 +3,8 @@ import os
 class Config:
     pass
     # we change to our own databases 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://mugera:Mugbwo9856@localhost/letewa'
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://githui:Kqcaptain#2@localhost/letewa'
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://mugera:Mugbwo9856@localhost/letewa'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://githui:Kqcaptain#2@localhost/letewa'
     SECRET_KEY = os.environ.get('SECRET_KEY')
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     MAIL_SERVER = 'smtp.googlemail.com'

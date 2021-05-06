@@ -1,19 +1,26 @@
-{% extends 'base.html' %} {% block content %}
-
-<div id="supplier-landing-page">
-  <div id="landing-page-text">
-    <p>Looking for your better half?</p>
-    <button type="submit" class="btn btn-success">Make Order</button>
+{% extends 'base.html'%} {% block styles%} {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='/css/index.css')}}" />
+{% endblock %}{% block content%}
+<div class="container">
+  <div class="supplier-name">
+    <p id="supplier-name-text">Supplier Page</p>
   </div>
-  <div id="landing-page-img">
-    <img src="../../static/photos/Images/landingpage.jpg" href="pizza image" />
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-3" id="supplier-login">
+      <p ><a href="#" id="supplier-login-text">INCOMING ORDERS</a></p>
+     
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3" id="suppliers-login">
+      <p><a href="/update-product" id="suppliers-login-text">UPDATE CATALOGUE</a></p>
+     
+    </div>
+    <div class="col-md-2"></div>
   </div>
+ 
 
-  <!-- <a
-    href="{{url_for('main.update_products')}}"
-    class="btn btn-outline-success mt-5"
-    >Add Products</a
-  > -->
 </div>
+
 
 {% endblock %}
