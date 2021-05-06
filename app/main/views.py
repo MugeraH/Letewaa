@@ -35,7 +35,7 @@ def logintwo():
     if login_form.validate_on_submit():
         seller = Seller.query.filter_by(email = login_form.email.data).first()
         if seller is not None and seller.verify_password(login_form.password.data):
-            login_seller(seller,login_form.remember.data)
+            # login_seller(seller,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.supplier_page'))
 
         flash('Invalid username or Password')
