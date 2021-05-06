@@ -59,8 +59,6 @@
   font-size: 45px;
 }
 
-
-
 #s-text {
   /* bottom: 50%; */
   padding-top: 150px;
@@ -252,43 +250,39 @@
   align-self: flex-end;
 }
 
-
-#supplier-login{
-    background-color: #ee1919;
-    height: 150px;
-    border-radius: 10px;
-    text-align: center;
-    padding-top:60px;
+#supplier-login {
+  background-color: #ee1919;
+  height: 150px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 60px;
 }
 
-#suppliers-login{
-    background-color: #ee1919;
-    height: 150px;
-    border-radius: 10px;
-    text-align: center;
-    padding-top:60px;
+#suppliers-login {
+  background-color: #ee1919;
+  height: 150px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 60px;
 }
 
-.supplier-name{
-    text-align: center;
-    margin-top: 50px;   
-    font-size: 18px;
+.supplier-name {
+  text-align: center;
+  margin-top: 50px;
+}
+.supplier-name #supplier-name-text {
+  font-size: 25px;
 }
 
-
-#supplier-login-text{
-    color: white;
-    size: 16px;
+#supplier-login-text {
+  color: white;
+  size: 16px;
+  text-decoration: none;
 }
-
-#suppliers-login-text{
-    color: white;
-    size: 16px;
 
 .checkout-container {
   display: flex;
   height: 600px;
-
   border-radius: 10px;
   width: 65%;
   margin: 70px auto;
@@ -386,7 +380,6 @@
 
 .weather .image img {
   height: 100px;
-
 }
 
 .supplier-wrapper {
@@ -395,8 +388,6 @@
 
   display: flex;
   justify-content: space-between;
-}
-.product-details {
 }
 
 .price-btn {
@@ -412,4 +403,9 @@
 }
 .price-btn span {
   font-size: 20px;
+}
+
+/* supplier page */
+.orders-count {
+  font-size: 26px;
 }

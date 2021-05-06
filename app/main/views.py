@@ -1,6 +1,6 @@
 from flask import render_template,request,redirect,url_for,request,redirect,url_for
 from . import main
-from ..requests import get_weather,get_weather_information
+from ..requests import get_weather,get_weather_information,get_days,get_hours,get_minutes
 from flask_login import login_required,current_user
 from .. import db,photos
 from ..email import mail_message
@@ -161,17 +161,19 @@ def supplier_page():
     then click on the orders to go to the orders page
 
     """
+    orders = Orders.query.filter_by(user_id=current_user._get_current_object().id)
    
-    return render_template('supplier/supplier_page.html')
+    return render_template('supplier/supplier_page.html',orders=orders)
 
-@main.route('/orders/<int:supplier_id>')
+@main.route('/orders_page/')
 @login_required
-def get_orders(supplier_id):
+def get_orders():
     """
     Get supplier id and use it to query orders db and group by user id/order-id
     """
+    orders_list = Orders.query.filter_by(user_id=current_user._get_current_object().id).all()
    
-    return render_template('orders_page.html')
+    return render_template('supplier/orders_page.html',orders_list=orders_list)
 
 @main.route('/supplier_confirmation')
 @login_required
