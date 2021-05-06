@@ -23,12 +23,10 @@
 
   <div id="select" class="container card-wrapper mt-2">
     <div class="user_select">
-      <a href="/buyer_login">Customer</a>
+      <a href="{{url_for('auth.login')}}">Customer</a>
     </div>
     <div class="user_select">
-
-      <a href="/seller_login">Supplier</a>
-
+      <a href="{{url_for('auth2.login')}}">Supplier</a>
     </div>
   </div>
 
