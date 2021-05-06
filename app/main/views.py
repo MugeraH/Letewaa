@@ -5,7 +5,7 @@ from flask_login import login_required,current_user
 from .. import db,photos
 from ..email import mail_message
 from ..models import Orders,Seller,User,Product,Cart
-from .forms import ProductForm,UpdateProfile
+from .forms import ProductForm,UpdateProfile, UpdateProduct
 
 
 
@@ -65,7 +65,7 @@ def add_to_cart(product_id):
    
     product_id = product_id
     user_id = current_user
-    cart_item = Cart(product_id=product_id,user_id=current_user._get_current_object().id)
+    cart_item = Cart(product_id=product_id,user_id=current_user._get_current_object().id,product= product.product_name,product_picture=product.product_picture)
     cart_item.add_item_to_cart()
     print(cart_item)
     
@@ -78,29 +78,35 @@ def add_to_cart(product_id):
 
 
 
-@main.route('/orders/<int:user_id>')
+@main.route('/checkout')
 @login_required
-def view_orders(user_id):
-    """
-    Get user id and use it to query orders db and select all the orders of a user
-    OPTION:Having a checkout cart
-           Having a cart model to query and get the orders
-           then now save them to orders table
-    """
+def checkout():
+    
+    cart_items= Cart.query.filter_by(user_id =current_user._get_current_object().id ).all()
    
-    return render_template('cart-view_page.html')
+   
+   
+  
+   
+    return render_template('user/checkout.html',cart_items=cart_items)
 
 
-@main.route('/confirmation/<int:user_id>')
+
+
+@main.route('/user_confirmation/')
 @login_required
-def user_confirmation(user_id):
+def user_confirmation():
     """
     Inform user that their order has been sent and send notification to supplier of a
     new order, also thank the user 
-   
     """
+    
+    user = User.query.filter_by(id=current_user._get_current_object().id).first()
+    db.session.query(Cart).delete()
+    db.session.commit()
    
-    return render_template('confirmation_page.html')
+   
+    return render_template('user/confirmation_page.html',user=user)
 
 
 
@@ -111,13 +117,13 @@ def user_confirmation(user_id):
 @login_required
 def supplier_page():
     """
-    Supplier logs into their page
+    Supplier is re-directed to their page
     Query orders table by supplier id,and get all active orders
     then click on the orders to go to the orders page
 
     """
    
-    return render_template('supplier_page.html')
+    return render_template('supplier/supplier_page.html')
 
 @main.route('/orders/<int:supplier_id>')
 @login_required
@@ -146,7 +152,7 @@ def update_products():
     products update form
     add_products where supplier id = current user id
     """
-    form = ProductForm()
+    form = UpdateProduct()
     
     if form.validate_on_submit():
         product_name = form.product_name.data

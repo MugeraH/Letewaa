@@ -17,27 +17,29 @@
     </div>
     <div id="landing-page-text">
       <p id="text-order">Looking for your better half?</p>
-      <button type="submit" class="btn btn-danger">Make Order</button>
+      <a href="#select" class="btn btn-danger">Make Order</a>
     </div>
   </div>
 
-  <div class="container card-wrapper m-5">
+  <div id="select" class="container card-wrapper mt-2">
     <div class="user_select">
-      <a href="{{url_for('auth.login')}}">Customer</a>
+      <a href="{{url_for('main.user_page')}}">Customer</a>
     </div>
     <div class="user_select">
-      <a href="{{url_for('auth.login')}}">Supplier</a>
+
+      <a href="{{url_for('main.supplier_page')}}">Supplier</a>
+
     </div>
   </div>
 
-  <div id="image-landing">
-    <!-- <img src="Images/ldpage.jpeg" id="ldpage"> -->
+  <!-- <div id="image-landing">
+    <img src="Images/ldpage.jpeg" id="ldpage"> 
     <p id="order-text">
       Make an Order
       <br />
       Let Us Bring it to you
     </p>
-  </div>
+  </div> -->
 </div>
 
 {%endblock%}

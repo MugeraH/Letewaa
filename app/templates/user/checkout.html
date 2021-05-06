@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% import 'macros.html' as macro%} {% block content %}
+<div class="container-fluid">
+  <h3 class="text-center mt-5 mb-0">Checkout Page</h3>
+
+  <div class="checkout-container container-fluid">
+    <div class="orders-list">{{ macro.displayCartItems(cart_items)}}</div>
+    <div class="checkout">
+      <h3>Total: 2000</h3>
+      <a href="{{url_for('main.user_confirmation')}}"
+       class="btn btn-danger">Make Order</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

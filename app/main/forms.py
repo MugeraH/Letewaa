@@ -12,8 +12,6 @@ class OrderForm(FlaskForm):
     Amount=StringField("Amount",validators=[Required()])
       
     submit = SubmitField("Add Product",validators=[Required()])
-   
-
 
 
 class SellerRegisterForm(FlaskForm):
@@ -26,8 +24,6 @@ class SellerRegisterForm(FlaskForm):
     id=StringField("id" ,validators=[Required()])
 
 
-
-
 class ProductForm(FlaskForm):
     product_name = StringField("Name",validators=[Required()])
     description = TextAreaField("Description",validators=[Required()])
@@ -35,7 +31,12 @@ class ProductForm(FlaskForm):
     submit = SubmitField("Place Order",validators=[Required()])
   
 
-
+class UpdateProduct(FlaskForm):
+    product_name = StringField("Name",validators=[Required()])
+    description = TextAreaField("Description",validators=[Required()])
+    product_picture=FileField("UploadImage",validators=[Required()])
+    submit = SubmitField("Update",validators=[Required()])
+  
 
 class UpdateProfile(FlaskForm):
     bio = TextAreaField('Tell us about you.',validators = [Required()])

@@ -2,6 +2,18 @@
 * {
   box-sizing: border-box;
   font-family: "Pacifico", cursive;
+  scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgb(213, 19, 19);
+  border: transparent;
 }
 
 #supplier-landing-page {
@@ -16,17 +28,18 @@
 
 #landing-page-img {
   float: right;
+  margin-left: 200px;
 }
 
 #landing-page-text {
   position: absolute;
   float: left;
-  margin-top: 10px;
+  margin-top: 7px;
   font-weight: bold;
   font-size: 30px;
   width: 250px;
   text-align: center;
-  margin-right: 500px;
+  margin-right: 450px;
 }
 
 #image-landing {
@@ -42,14 +55,11 @@
   padding-top: 200px;
   color: white;
 }
-
-.card {
-  height: 200px;
-  width: 200px;
-  display: flex;
-  flex-direction: row;
-  border: black solid 1px;
+#text-order {
+  font-size: 45px;
 }
+
+
 
 #s-text {
   /* bottom: 50%; */
@@ -103,15 +113,6 @@
   justify-content: center;
   margin-right: 160px;
 }
-/* .card {
-  background-color: #ee1919;
-  color: white;
-  text-align: center;
-  align-items: center;
-  border-radius: 10px;
-  height: 150px;
-  font-size: 22px;
-} */
 
 .card-text {
   margin-top: 25px;
@@ -154,17 +155,19 @@
 }
 
 .card-wrapper {
-  height: 200px;
+  height: 400px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin: 0px auto;
 }
 .user_select {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
 
-  margin: 20px 20px 80px 60px;
+  margin: 10px 50px 80px 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,17 +175,18 @@
 
 .user_select a {
   background-color: rgb(172, 21, 21);
-  padding: 100px 70px;
+  padding: 140px 130px;
   cursor: pointer;
   text-decoration: none;
   border-radius: 20px;
   color: white;
   font-size: 24px;
+
   transition: all 0.5s ease;
 }
 
 .user_select a:hover {
-  padding: 110px 80px;
+  padding: 150px 140px;
   font-size: 28px;
 }
 
@@ -232,6 +236,7 @@
   -webkit-box-shadow: -1px 3px 5px 2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px 3px 5px 2px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 3px 5px 2px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
 }
 .product-card img {
   height: 190px;
@@ -245,4 +250,119 @@
 
 .cart-count {
   align-self: flex-end;
+}
+
+
+#supplier-login{
+    background-color: #ee1919;
+    height: 150px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top:60px;
+}
+
+#suppliers-login{
+    background-color: #ee1919;
+    height: 150px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top:60px;
+}
+
+.supplier-name{
+    text-align: center;
+    margin-top: 50px;   
+    font-size: 18px;
+}
+
+
+#supplier-login-text{
+    color: white;
+    size: 16px;
+}
+
+#suppliers-login-text{
+    color: white;
+    size: 16px;
+
+.checkout-container {
+  display: flex;
+  height: 600px;
+
+  border-radius: 10px;
+  width: 65%;
+  margin: 70px auto;
+  padding: 10px;
+  -webkit-box-shadow: -1px 2px 19px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 2px 19px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 2px 19px -1px rgba(0, 0, 0, 0.75);
+}
+
+.orders-list {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: scroll;
+}
+.checkout {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.checkout h3 {
+  margin-top: 60px;
+}
+
+.checkout a {
+  margin-top: 50px;
+}
+
+.checkout-item {
+  width: 100%;
+  display: flex;
+  height: 240px;
+  margin: 10px 0px;
+  border-right: 3px solid black;
+}
+
+.checkout-item .image {
+  width: 55%;
+  height: 100%;
+}
+.checkout-item .image img {
+  height: 100%;
+  object-fit: cover;
+  width: 300px;
+  margin: 0px auto;
+}
+.checkout-item .form {
+  text-align: center;
+  width: 45%;
+  height: 100%;
+}
+
+.message {
+  margin: 50px auto;
+  width: 60%;
+}
+.message p {
+  font-size: 30px;
+}
+
+.weather {
+  border: 3px solid black;
+  width: 30%;
+  margin-left: 70%;
+  display: flex;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.weather .image img {
+  height: 100px;
+
 }

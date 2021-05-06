@@ -81,6 +81,7 @@ class Orders(db.Model):
     pizza_name=db.Column(db.String)
     pizza_size=db.Column(db.String)
     price=db.Column(db.Integer)
+    status=db.Column(db.String)
     product_id=db.Column(db.Integer, db.ForeignKey('products.id',ondelete='SET NULL'),nullable = True)
     time=db.Column(db.DateTime(),default=datetime.utcnow)
     user_id=db.Column(db.Integer, db.ForeignKey("users.id",ondelete='SET NULL'),nullable = True)
@@ -92,6 +93,8 @@ class Orders(db.Model):
 class Cart(db.Model):
     __tablename__="cart"
     id=db.Column(db.Integer, primary_key=True)
+    product=db.Column(db.String)
+    product_picture=db.Column(db.String)
     product_id=db.Column(db.Integer, db.ForeignKey('products.id',ondelete='SET NULL'),nullable = True)
     user_id=db.Column(db.Integer, db.ForeignKey("users.id",ondelete='SET NULL'),nullable = True)
     
@@ -99,9 +102,12 @@ class Cart(db.Model):
         db.session.add(self)
         db.session.commit()
      
+    # def delete_cart(self):      
+    #     db.session.add(self)
+    #     db.session.commit()
+     
     def __repr__(self):
-        
-        return f'Cart{self.id}'
+        return f'Cart{self.product}'
      
     
 
