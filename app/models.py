@@ -9,10 +9,10 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 @login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+def load_seller(seller_id):
+    return Seller.query.get(int(seller_id))
 
-
+# clea
 class User(db.Model,UserMixin):
     __tablename__='users'
 
@@ -21,7 +21,6 @@ class User(db.Model,UserMixin):
     email=db.Column(db.String)
     pass_secure = db.Column(db.String(255))
     phone=db.Column(db.String)
-    bio=db.Column(db.String)
     profile_picture_path=db.Column(db.String)
     orders =db.relationship("Orders", backref="users", lazy="dynamic")
     cart =db.relationship("Cart", backref="users", lazy="dynamic")
@@ -36,7 +35,6 @@ class User(db.Model,UserMixin):
         self.pass_secure = generate_password_hash(password)
         
     def verify_password(self,password):
-
         return check_password_hash(self.pass_secure,password)
 
 
@@ -44,7 +42,7 @@ class User(db.Model,UserMixin):
     def __repr__(self):
         return f'User{self.username}'
 
-class Seller(db.Model):
+class Seller(db.Model,UserMixin):
     __tablename__='sellers'
 
     id=db.Column(db.Integer, primary_key=True)
@@ -66,10 +64,15 @@ class Seller(db.Model):
         self.pass_secure = generate_password_hash(password)
         
     def verify_password(self,password):
-        return check_password_hash(self.pass_secure, password)
+        return check_password_hash(self.pass_secure,password)
+        
+
 
     def __repr__(self):
         return f'Seller{self.username}'
+    
+    
+    
 
 class Product(db.Model):
     __tablename__="products"
