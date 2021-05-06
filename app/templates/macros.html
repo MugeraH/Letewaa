@@ -20,8 +20,30 @@ supplier_products_list %}
     <h4>{{product.product_name}}</h4>
     <p>{{product.description}}</p>
     <p>
-      <a href="{{url_for('main.add_to_cart',product_id = product.id)}}" class="btn btn-danger">Add to cart</a>
+      <a
+        href="{{url_for('main.add_to_cart',product_id = product.id)}}"
+        class="btn btn-danger"
+        >Add to cart</a
+      >
     </p>
+  </div>
+</div>
+
+{% endfor %} {% endmacro %}
+
+<!-- checkout -->
+
+{% macro displayCartItems(cart_items) %} {% for item in cart_items %}
+<div class="checkout-item">
+  <div class="image">
+    <img src="{{url_for('static',filename=item.product_picture)}}" alt="" />
+  </div>
+  <div class="form">
+    <h4>{{item.product}}</h4>
+    <h5>Amount</h5>
+    <h3>1</h3>
+    <h5>Price</h5>
+    <h3>1000</h3>
   </div>
 </div>
 
