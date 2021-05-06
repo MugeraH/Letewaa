@@ -3,10 +3,16 @@
 {% endblock %}{% block content %}
 <div class="container-fluid">
   <div class="orders-container">
+    <div class="orders-list">
+      {%for item in orders_list%}
+      <div class="orders-wrapper">
+        <h2>{{item.pizza_name}}</h2>
+        <h2>{{item.time.time()}}</h2>
+      </div>
 
-    
-
+      {%endfor%}
+      <button class="btn btn-danger">Accept orders</button>
+    </div>
   </div>
 </div>
-  {% endblock %}
-
+{% endblock %}

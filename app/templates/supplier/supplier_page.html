@@ -8,19 +8,17 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-3" id="supplier-login">
-      <p ><a href="#" id="supplier-login-text">INCOMING ORDERS</a></p>
-     
+      <p><a href="/orders_page" id="supplier-login-text">INCOMING ORDERS</a></p>
+      <p class="text-white orders-count p-0 m-0">{{orders.count()}}</p>
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-3" id="suppliers-login">
-      <p><a href="/update-product" id="suppliers-login-text">UPDATE CATALOGUE</a></p>
-     
+      <p>
+        <a href="/update-product" id="supplier-login-text">UPDATE CATALOGUE</a>
+      </p>
     </div>
     <div class="col-md-2"></div>
   </div>
- 
-
 </div>
-
 
 {% endblock %}
