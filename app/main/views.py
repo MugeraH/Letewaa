@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect,url_for,request,redirect,url_for
+from flask import render_template,request,redirect,url_for,request,redirect,url_for,flash
 from . import main
 from ..requests import get_weather,get_weather_information
 from flask_login import login_required,current_user
@@ -6,9 +6,8 @@ from .. import db,photos
 from ..email import mail_message
 from ..models import Orders,Seller,User,Product,Cart
 from .forms import ProductForm,UpdateProfile, UpdateProduct
-from ..auth.forms import BuyerRegistrationForm, BuyerLoginForm, SellerLoginForm, SellerRegistrationForm
-
-
+from ..auth.forms import BuyerRegistrationForm, BuyerLoginForm 
+from ..auth2.forms import SellerLoginForm, SellerRegistrationForm
 
 
 @main.route('/')
@@ -30,7 +29,7 @@ def login():
  
     return render_template('auth/login.html',login_form = login_form,)
 
-@main.route('/supplier_login',methods=['GET','POST'])
+@main.route('/seller_login',methods=['GET','POST'])
 def logintwo():
     login_form = SellerLoginForm()
     if login_form.validate_on_submit():
@@ -42,7 +41,7 @@ def logintwo():
         flash('Invalid username or Password')
 
  
-    return render_template('auth/loginsupplier.html',login_form = login_form,)
+    return render_template('auth2/login.html',login_form = login_form)
 
 
 
@@ -61,7 +60,7 @@ def register():
     return render_template('auth/register.html',registration_form = form)
 
 
-@main.route('/supplier_register',methods = ["GET","POST"])
+@main.route('/seller_register',methods = ["GET","POST"])
 def registertwo():
     form = SellerRegistrationForm()
     if form.validate_on_submit():
@@ -71,9 +70,9 @@ def registertwo():
         
         # mail_message("Welcome to Letewaa","email/welcome_user",seller.email,seller=seller)
         
-        return redirect(url_for('auth.loginsupplier'))
+        return redirect(url_for('auth2.login'))
         title = "New Account"
-    return render_template('auth/registersupplier.html',registration_form = form)
+    return render_template('auth2/register.html',registration_form = form)
 
 
 @main.route('/user_page')
