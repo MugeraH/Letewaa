@@ -1,3 +1,7 @@
-Hello {user.username}
+Hello {{user.username}}
 
-{seller.username} has received your order and are currently processing it. You will be notified of any updates with regards to your order.
+We have received your order and are currently processing it.
+When ready you will be contacted with the contact details you provided
+otherwise you will be notified of any other updates with regards to your order.
+
+Regards {{seller.username}}

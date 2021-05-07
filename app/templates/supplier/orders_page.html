@@ -3,15 +3,64 @@
 {% endblock %}{% block content %}
 <div class="container-fluid">
   <div class="orders-container">
-    <div class="orders-list">
-      {%for item in orders_list%}
-      <div class="orders-wrapper">
-        <h2>{{item.pizza_name}}</h2>
-        <h2>{{item.time.time()}}</h2>
+    <div class="orders-list-wrapper">
+      <div class="orders-wrapper container-fluid">
+        <div class="row">
+          {%if orders_list%} {%for item in orders_list%}
+          <div class="orders-item">
+            <div class="order-title">
+              <h2>{{item.pizza_name}}</h2>
+              <h2>Order id.{{item.id}}</h2>
+            </div>
+
+            <h3>{{item.size}}</h3>
+            <h3>Ksh.{{item.price}}</h3>
+            <h3>Ordered at:{{item.time.strftime("%H:%M:%S")}}</h3>
+            <h3>
+              Status: {%if item.isAccepted%}
+              <a
+                href="{{url_for('main.update_status',order_id=item.id)}}"
+                class="btn btn-success"
+                >Ready</a
+              >
+              {%else%}
+              <a
+                href="{{url_for('main.update_status',order_id=item.id)}}"
+                class="btn btn-danger"
+                >Pending</a
+              >
+              {%endif%}
+            </h3>
+          </div>
+
+          {%endfor%} {%else%}
+          <div>
+            <h2 class="text-center">
+              You have no pending orders at the moment
+            </h2>
+          </div>
+          {%endif%}
+        </div>
       </div>
 
-      {%endfor%}
-      <button class="btn btn-danger">Accept orders</button>
+      {%if orders_list%}
+      <div class="supplier-actions">
+        <a
+          href="{{url_for('main.supplier_confirmation')}}"
+          class="btn btn-outline-success mr-5"
+          >Accept orders</a
+        >
+        <a
+          href="{{url_for('main.clear_orders')}}"
+          class="btn btn-outline-danger"
+          >Clear Orders</a
+        >
+      </div>
+      {%else%}
+      <div>
+        <a href="/supplier_page" class="btn btn-outline-success">Back</a>
+      </div>
+      {%endif%}
     </div>
   </div>
 </div>
