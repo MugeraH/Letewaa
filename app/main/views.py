@@ -187,10 +187,37 @@ def get_orders():
 @login_required
 def supplier_confirmation():
     """
+    EMAIL 
     Supplier notified that he/she has accepted orders and notification has been sent to user
     """
+    
    
-    return render_template('supplier_confirmation.html')
+    return render_template('supplier/supplier-confirmation.html')
+
+@main.route('/clear_orders')
+@login_required
+def clear_orders():
+    db.session.query(Orders).delete()
+    db.session.commit()
+   
+   
+    return redirect(url_for("main.get_orders"))
+
+
+@main.route('/update_status/<int:order_id>')
+@login_required
+def update_status(order_id):
+    order= Orders.query.filter_by(id=order_id).first()
+    order.isAccepted = not order.isAccepted
+    db.session.commit()
+   
+   
+    return redirect(url_for("main.get_orders"))
+
+
+
+
+
 
 @main.route('/update-product/', methods=["GET", "POST"])
 # @login_required
