@@ -5,13 +5,13 @@ import time
 from flask_login import UserMixin
 from . import login_manager
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
 # @login_manager.user_loader
-# def load_user(seller_id):
-#     return Seller.query.get(int(seller_id))
+# def load_user(user_id):
+#     return User.query.get(int(user_id))
+
+@login_manager.user_loader
+def load_user(seller_id):
+    return Seller.query.get(int(seller_id))
 
 
 class User(db.Model,UserMixin):
