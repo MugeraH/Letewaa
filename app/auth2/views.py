@@ -13,6 +13,7 @@ def login():
     if login_form.validate_on_submit():
         seller= Seller.query.filter_by(email = login_form.email.data).first()
         if seller is not None and seller.verify_password(login_form.password.data):
+            # login_user(user,login_form.remember.data)
             login_user(seller,login_form.remember.data)
             return redirect(request.args.get('next') or url_for('main.supplier_page'))
 
@@ -35,6 +36,8 @@ def register():
         seller =Seller(email = form.email.data, username = form.username.data,password =form.password.data)
         db.session.add(seller)
         db.session.commit()
+
+        mail_message("Karibu Letewa","email/welcome_user",seller.email,seller=seller)
         
         return redirect(url_for('auth2.login'))
         title = "New Account"

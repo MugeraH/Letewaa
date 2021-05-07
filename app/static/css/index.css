@@ -410,6 +410,78 @@
   font-size: 26px;
 }
 
+
+/* forms */
+#form-content{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  margin: 80px;
+  max-width: 90%;
+}
+
+#form-content-form{
+  box-shadow: 5px 10px 18px #7a6363;
+  padding: 30px;
+  max-height: 100vh;
+}
+
+#sellercontainer{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  margin: 80px;
+  max-width: 90%;
+}
+
+#sellerlogin{
+  box-shadow: 5px 10px 18px #7a6363;
+  padding: 30px;
+  max-height: 100vh;
+}
+
+#sellcontainer{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  margin: 80px;
+  max-width: 90%;
+}
+
+#sellerregistration{
+  box-shadow: 5px 10px 18px #7a6363;
+  padding: 30px;
+  max-height: 100vh;
+}
+
+#buyercontainer{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  margin: 80px;
+  max-width: 90%;
+}
+
+#buyerlogin{
+  box-shadow: 5px 10px 18px #7a6363;
+  padding: 30px;
+  max-height: 100vh;
+}
+
+#regbuyer{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  margin: 80px;
+  max-width: 90%;
+}
+
+#buyerform{
+  box-shadow: 5px 10px 18px #7a6363;
+  padding: 30px;
+  max-height: 100vh;
+}
+
 .orders-list-wrapper {
   width: 89%;
 
@@ -465,3 +537,4 @@
   align-items: center;
   padding-right: 5px;
 }
+
