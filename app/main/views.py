@@ -12,8 +12,8 @@ from ..auth2.forms import SellerLoginForm, SellerRegistrationForm
 current_seller=0
 @main.route('/')
 def index():
-   
-
+    
+    return render_template('index.html')
 
 
 @main.route('/user_page')
@@ -62,6 +62,8 @@ def add_to_cart(product_id):
     user_id = current_user
     cart_item = Cart(product_id=product_id,user_id=current_user._get_current_object().id,product= product.product_name,product_picture=product.product_picture)
     cart_item.add_item_to_cart()
+    mail_message("Order received , email/order_received",user.email,user=user)
+
     print(cart_item)
     
     return redirect(url_for('.supplier_products', supplier_id = product.seller_id))

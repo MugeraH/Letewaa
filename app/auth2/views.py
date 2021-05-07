@@ -37,7 +37,7 @@ def register():
         db.session.add(seller)
         db.session.commit()
 
-        mail_message("Welcome to watchlist","email/welcome_user",seller.email,seller=seller)
+        mail_message("Karibu Letewa","email/welcome_user",seller.email,seller=seller)
         
         return redirect(url_for('auth2.login'))
         title = "New Account"
