@@ -1,6 +1,3 @@
-venv/
-
+virtual
 *.pyc
-instance/
-virtual/
-*.pyc
+start.sh

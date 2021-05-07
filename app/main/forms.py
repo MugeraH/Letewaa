@@ -34,6 +34,7 @@ class ProductForm(FlaskForm):
 class UpdateProduct(FlaskForm):
     product_name = StringField("Name",validators=[Required()])
     description = TextAreaField("Description",validators=[Required()])
+    product_price = StringField("Price",validators=[Required()])
     product_picture=FileField("UploadImage",validators=[Required()])
     submit = SubmitField("Update",validators=[Required()])
   
