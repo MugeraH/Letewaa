@@ -24,5 +24,4 @@ def make_shell_context():
 
 
 if __name__ == '__main__':
-    app.config['SECRET_KEY'] = 'any secret string'
     manager.run()
