@@ -29,7 +29,7 @@ super() }}
     </div>
     <div class="checkout-cart">
       <div class="text-center"><h3>Cart items: {{cart_items_count}}</h3></div>
-      <a href="{{url_for('main.checkout')}}" class="btn btn-danger">Checkout</a>
+      <a href="{{url_for('main.checkout',seller_id=seller.id)}}" class="btn btn-danger">Checkout</a>
     </div>
   </div>
 

@@ -1,27 +1,25 @@
-from flask import render_template,request,redirect,url_for,request,redirect,url_for
+from flask import render_template,request,redirect,url_for,request,redirect,url_for,abort,flash
 from . import main
-from ..requests import get_weather,get_weather_information
+from ..requests import get_weather,get_weather_information,get_days,get_hours,get_minutes
 from flask_login import login_required,current_user
 from .. import db,photos
 from ..email import mail_message
 from ..models import Orders,Seller,User,Product,Cart
 from .forms import ProductForm,UpdateProfile, UpdateProduct
+from ..auth.forms import BuyerRegistrationForm, BuyerLoginForm 
+from ..auth2.forms import SellerLoginForm, SellerRegistrationForm
 
-
-
-
+current_seller=0
 @main.route('/')
 def index():
-   
+    
     return render_template('index.html')
-
 
 
 @main.route('/user_page')
 @login_required
 def user_page():
-  
-    
+
     supplier_list = Seller.query.all()
     weather_data = get_weather()
    
@@ -40,11 +38,12 @@ def supplier_products(supplier_id):
 
     
     """
+    current_seller = supplier_id
     seller = Seller.query.filter_by(id=supplier_id).first()
     product = Product.query.filter_by(id=supplier_id).first()
     
     cart_items = Cart.query.filter_by(user_id=current_user._get_current_object().id).all()
-    print(len(cart_items))
+    # print(len(cart_items))
     cart_items_count = len(cart_items)
   
   
@@ -63,14 +62,20 @@ def add_to_cart(product_id):
     user_id = current_user
     cart_item = Cart(product_id=product_id,user_id=current_user._get_current_object().id,product= product.product_name,product_picture=product.product_picture)
     cart_item.add_item_to_cart()
+
+    
+
     print(cart_item)
     
     return redirect(url_for('.supplier_products', supplier_id = product.seller_id))
 
-@main.route('/checkout')
+
+@main.route('/checkout/<int:seller_id>')
+
 @login_required
-def checkout():
+def checkout(seller_id):
     total_cost=[]
+    seller_id=seller_id
    
     cart_items= Cart.query.filter_by(user_id =current_user._get_current_object().id ).all()
     for item in cart_items:
@@ -78,15 +83,12 @@ def checkout():
         
     total_cost_value= sum(total_cost)
     
-    print(total_cost_value)
-    
-    
-   
+    print(seller_id)
       
-    return render_template('user/checkout.html',cart_items=cart_items,total_cost_value=total_cost_value)
+    return render_template('user/checkout.html',cart_items=cart_items,total_cost_value=total_cost_value,seller_id=seller_id)
 
-@main.route('/get_cost/<int:product_id>/<int:cartItem_id>',methods=["POST"])
-def get_cost(product_id,cartItem_id):
+@main.route('/get_cost/<int:product_id>/<int:cartItem_id>/<int:seller_id>',methods=["POST"])
+def get_cost(product_id,cartItem_id,seller_id):
     total_cost=[]
     product = Product.query.filter_by(id=product_id).first()
     cart = Cart.query.filter_by(id=cartItem_id).first()
@@ -118,29 +120,33 @@ def get_cost(product_id,cartItem_id):
         db.session.commit()
          
     
-    return redirect(url_for('.checkout'))
+    return redirect(url_for('.checkout',seller_id=seller_id))
 
 
 
-@main.route('/user_confirmation/')
+@main.route('/user_confirmation/<int:seller_id>')
 @login_required
-def user_confirmation():
+def user_confirmation(seller_id):
     """
     Inform user that their order has been sent and send notification to supplier of a
     new order, also thank the user 
     """
     
-    user = User.query.filter_by(id=current_user._get_current_object().id).first()
-   
-    cart_items= Cart.query.filter_by(user_id =current_user._get_current_object().id ).all()
     
+    cart_items= Cart.query.filter_by(user_id =current_user._get_current_object().id ).all()
+    print(current_seller)
     for item in cart_items:
+       
         product = Product.query.filter_by(id=item.product_id).first()
-        order_item_object= Orders(pizza_name=item.product,pizza_size=item.size,price=item.product_cost,user_id=current_user._get_current_object().id ,product_id=item.product_id,seller_id=product.seller_id)
-        order_item_object.add_order()
-        
-        
-        
+        order_item_object= Orders(pizza_name=item.product,pizza_size=item.size,price=item.product_cost,user_id=current_user._get_current_object().id ,product_id=item.product_id,seller_id=seller_id)
+        order_item_object.add_order()  
+        print(order_item_object)  
+        user = User.query.filter_by(id=current_user._get_current_object().id).first()
+        seller = Seller.query.filter_by(id=seller_id).first() 
+       
+        mail_message("Order has been sent","email/order_placed",user.email,user=user,item=item,seller=seller)
+              
+    
     db.session.query(Cart).delete()
     db.session.commit()
    
@@ -161,26 +167,69 @@ def supplier_page():
     then click on the orders to go to the orders page
 
     """
-   
-    return render_template('supplier/supplier_page.html')
+    user_id=current_user._get_current_object().id
+    print(user_id)
+    orders = Orders.query.filter_by(seller_id=current_user._get_current_object().id)
 
-@main.route('/orders/<int:supplier_id>')
+
+   
+   
+    return render_template('supplier/supplier_page.html',orders=orders)
+
+@main.route('/orders_page/')
 @login_required
-def get_orders(supplier_id):
+def get_orders():
     """
     Get supplier id and use it to query orders db and group by user id/order-id
     """
+    orders_list = Orders.query.filter_by(seller_id=current_user._get_current_object().id).all()
    
-    return render_template('orders_page.html')
+    return render_template('supplier/orders_page.html',orders_list=orders_list)
+
 
 @main.route('/supplier_confirmation')
 @login_required
 def supplier_confirmation():
     """
+    EMAIL 
     Supplier notified that he/she has accepted orders and notification has been sent to user
     """
    
-    return render_template('supplier_confirmation.html')
+    orders_list = Orders.query.filter_by(seller_id=current_user._get_current_object().id).all()
+    for order in orders_list:
+        user = User.query.filter_by(id=order.user_id).first()
+        seller = Seller.query.filter_by(id=order.seller_id).first()
+        mail_message("Confirmation of order placed ","email/order_received",user.email,user=user,seller=seller)
+        
+   
+    return render_template('supplier/supplier-confirmation.html')
+
+
+
+@main.route('/clear_orders')
+@login_required
+def clear_orders():
+    db.session.query(Orders).delete()
+    db.session.commit()
+   
+   
+    return redirect(url_for("main.get_orders"))
+
+
+@main.route('/update_status/<int:order_id>')
+@login_required
+def update_status(order_id):
+    order= Orders.query.filter_by(id=order_id).first()
+    order.isAccepted = not order.isAccepted
+    db.session.commit()
+   
+   
+    return redirect(url_for("main.get_orders"))
+
+
+
+
+
 
 @main.route('/update-product/', methods=["GET", "POST"])
 # @login_required
@@ -203,11 +252,10 @@ def update_products():
         
         new_product_object.save_new_product()
         
-        
-   
+        # flash('Product Added')
+        return redirect(url_for('.supplier_page'))
+    
     return render_template('supplier/update_product.html',form=form)
-
-
 
 
 
