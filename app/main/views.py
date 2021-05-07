@@ -1,4 +1,4 @@
-from flask import render_template,request,redirect,url_for,request,redirect,url_for,flash
+from flask import render_template,request,redirect,url_for,request,redirect,url_for,abort,flash
 from . import main
 from ..requests import get_weather,get_weather_information,get_days,get_hours,get_minutes
 from flask_login import login_required,current_user
@@ -9,7 +9,7 @@ from .forms import ProductForm,UpdateProfile, UpdateProduct
 from ..auth.forms import BuyerRegistrationForm, BuyerLoginForm 
 from ..auth2.forms import SellerLoginForm, SellerRegistrationForm
 
-
+current_seller=0
 @main.route('/')
 def index():
    
@@ -60,26 +60,12 @@ def register():
     return render_template('auth/register.html',registration_form = form)
 
 
-@main.route('/seller_register',methods = ["GET","POST"])
-def registertwo():
-    form = SellerRegistrationForm()
-    if form.validate_on_submit():
-        seller =Seller(email = form.email.data, username = form.username.data,password =form.password.data)
-        db.session.add(seller)
-        db.session.commit()
-        
-        # mail_message("Welcome to Letewaa","email/welcome_user",seller.email,seller=seller)
-        
-        return redirect(url_for('auth2.login'))
-        title = "New Account"
-    return render_template('auth2/register.html',registration_form = form)
 
 
 @main.route('/user_page')
 @login_required
 def user_page():
-  
-    
+
     supplier_list = Seller.query.all()
     weather_data = get_weather()
    
@@ -98,6 +84,7 @@ def supplier_products(supplier_id):
 
     
     """
+    current_seller = supplier_id
     seller = Seller.query.filter_by(id=supplier_id).first()
     product = Product.query.filter_by(id=supplier_id).first()
     
@@ -127,11 +114,12 @@ def add_to_cart(product_id):
 
 
 
-@main.route('/checkout')
+@main.route('/checkout/<int:seller_id>')
 
 @login_required
-def checkout():
+def checkout(seller_id):
     total_cost=[]
+    seller_id=seller_id
    
     cart_items= Cart.query.filter_by(user_id =current_user._get_current_object().id ).all()
     for item in cart_items:
@@ -139,15 +127,15 @@ def checkout():
         
     total_cost_value= sum(total_cost)
     
-    print(total_cost_value)
+    print(seller_id)
     
     
    
       
-    return render_template('user/checkout.html',cart_items=cart_items,total_cost_value=total_cost_value)
+    return render_template('user/checkout.html',cart_items=cart_items,total_cost_value=total_cost_value,seller_id=seller_id)
 
-@main.route('/get_cost/<int:product_id>/<int:cartItem_id>',methods=["POST"])
-def get_cost(product_id,cartItem_id):
+@main.route('/get_cost/<int:product_id>/<int:cartItem_id>/<int:seller_id>',methods=["POST"])
+def get_cost(product_id,cartItem_id,seller_id):
     total_cost=[]
     product = Product.query.filter_by(id=product_id).first()
     cart = Cart.query.filter_by(id=cartItem_id).first()
@@ -179,13 +167,13 @@ def get_cost(product_id,cartItem_id):
         db.session.commit()
          
     
-    return redirect(url_for('.checkout'))
+    return redirect(url_for('.checkout',seller_id=seller_id))
 
 
 
-@main.route('/user_confirmation/')
+@main.route('/user_confirmation/<int:seller_id>')
 @login_required
-def user_confirmation():
+def user_confirmation(seller_id):
     """
     Inform user that their order has been sent and send notification to supplier of a
     new order, also thank the user 
@@ -194,10 +182,10 @@ def user_confirmation():
     user = User.query.filter_by(id=current_user._get_current_object().id).first()
    
     cart_items= Cart.query.filter_by(user_id =current_user._get_current_object().id ).all()
-    
+    print(current_seller)
     for item in cart_items:
         product = Product.query.filter_by(id=item.product_id).first()
-        order_item_object= Orders(pizza_name=item.product,pizza_size=item.size,price=item.product_cost,user_id=current_user._get_current_object().id ,product_id=item.product_id,seller_id=product.seller_id)
+        order_item_object= Orders(pizza_name=item.product,pizza_size=item.size,price=item.product_cost,user_id=current_user._get_current_object().id ,product_id=item.product_id,seller_id=seller_id)
         order_item_object.add_order()
         
         
@@ -222,7 +210,9 @@ def supplier_page():
     then click on the orders to go to the orders page
 
     """
-    orders = Orders.query.filter_by(user_id=current_user._get_current_object().id)
+    user_id=current_user._get_current_object().id
+    print(user_id)
+    orders = Orders.query.filter_by(seller_id=current_user._get_current_object().id)
    
     return render_template('supplier/supplier_page.html',orders=orders)
 
@@ -232,7 +222,7 @@ def get_orders():
     """
     Get supplier id and use it to query orders db and group by user id/order-id
     """
-    orders_list = Orders.query.filter_by(user_id=current_user._get_current_object().id).all()
+    orders_list = Orders.query.filter_by(seller_id=current_user._get_current_object().id).all()
    
     return render_template('supplier/orders_page.html',orders_list=orders_list)
 
@@ -266,8 +256,9 @@ def update_products():
         
         new_product_object.save_new_product()
         
-        
-   
+        # flash('Product Added')
+        return redirect(url_for('.supplier_page'))
+    
     return render_template('supplier/update_product.html',form=form)
 
 

@@ -1,8 +1,8 @@
-"""re-migrations
+"""Initial migration
 
-Revision ID: 60bde55ffe11
+Revision ID: b700eacb23e5
 Revises: 
-Create Date: 2021-05-06 22:21:11.498368
+Create Date: 2021-05-07 03:17:33.638501
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '60bde55ffe11'
+revision = 'b700eacb23e5'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,7 +34,6 @@ def upgrade():
     sa.Column('email', sa.String(), nullable=True),
     sa.Column('pass_secure', sa.String(length=255), nullable=True),
     sa.Column('phone', sa.String(), nullable=True),
-    sa.Column('bio', sa.String(), nullable=True),
     sa.Column('profile_picture_path', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -49,6 +48,12 @@ def upgrade():
     )
     op.create_table('cart',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('product', sa.String(), nullable=True),
+    sa.Column('product_picture', sa.String(), nullable=True),
+    sa.Column('product_price', sa.Integer(), nullable=True),
+    sa.Column('amount', sa.Integer(), nullable=True),
+    sa.Column('size', sa.String(), nullable=True),
+    sa.Column('product_cost', sa.Integer(), nullable=True),
     sa.Column('product_id', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['product_id'], ['products.id'], ondelete='SET NULL'),
@@ -60,6 +65,7 @@ def upgrade():
     sa.Column('pizza_name', sa.String(), nullable=True),
     sa.Column('pizza_size', sa.String(), nullable=True),
     sa.Column('price', sa.Integer(), nullable=True),
+    sa.Column('isAccepted', sa.Boolean(), server_default='false', nullable=True),
     sa.Column('product_id', sa.Integer(), nullable=True),
     sa.Column('time', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
