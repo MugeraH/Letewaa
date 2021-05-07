@@ -1,6 +1,6 @@
 {% extends 'base.html' %}{% import 'macros.html' as macro%} {% block content %}
 <div class="container-fluid">
-  <h3 class="text-center mt-5 mb-0">Checkout Page</h3>
+  <h3 class="text-center mt-3 mb-0">Checkout Page</h3>
 
   <div class="checkout-container container-fluid">
     <div class="orders-list">
@@ -48,15 +48,44 @@
       {%endfor%}
     </div>
     <div class="checkout">
-      <h3>Total:{{total_cost_value}}</h3>
-   
+      <h3 class="mb-4">Total:{{total_cost_value}}</h3>
+
+      <button
+        type="button"
+        class="btn btn-outline-success mt-5"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Make Payment
+      </button>
+
       <a
         href="{{url_for('main.user_confirmation',seller_id=seller_id)}}"
         class="btn btn-danger"
+        data-bs-dismiss="modal"
         >Make Order</a
       >
     </div>
   </div>
 </div>
 
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <h4 class="payment-option text-center mt-3">Payment Checkout</h4>
+      <div class="modal-body text-center">
+        <div class="logo text-center">
+          <img src="../static/photos/mpesa.png" alt="" />
+        </div>
+        <h4 class="mb-5">Total :{{total_cost_value}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -2,7 +2,7 @@
 content %}
 <div class="container" id="buyercontainer">
   <div class="row">
-    <div class="col-md-2" ></div>
+    <div class="col-md-2"></div>
     <div class="col-md-8 login-form" id="buyerlogin">
       <!--Flash message -->
       {% for message in get_flashed_messages() %}
@@ -14,12 +14,15 @@ content %}
       </div>
       {% endfor %}
       <!-- Login form -->
-      <div class="">{{wtf.quick_form(login_form)}}</div>
+      <div class="login-form">
+        <h3 class="text-center">Customer Login</h3>
+        {{wtf.quick_form(login_form)}}
+      </div>
 
-      <p class="">
+      <h6 class="mt-2">
         Don't have an account?
         <a href="{{url_for('auth.register')}}">Sign up here</a>
-      </p>
+      </h6>
     </div>
     <div clas="col-md-2"></div>
   </div>

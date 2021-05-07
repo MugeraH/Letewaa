@@ -3,7 +3,10 @@ content %}
 <div class="container" id="regbuyer">
   <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-8" id="buyerform">{{wtf.quick_form(registration_form)}}</div>
+    <div class="col-md-8 login-form" id="buyerform">
+      <h3 class="text-center">Customer Register</h3>
+      {{wtf.quick_form(registration_form)}}
+    </div>
     <div class="col-md-2"></div>
   </div>
 </div>
