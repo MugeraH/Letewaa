@@ -23,12 +23,12 @@ class ProdConfig(Config):
     # SQLALCHEMY_DATABASE_URI = "postgresql://vzptjkvwwukqax:9f863d965fec49851c9daa903a53bb7d5acb267c1ea1d19ea0012b73ff9e1f65@ec2-34-225-167-77.compute-1.amazonaws.com:5432/ddjuf4iqfo6c55?sslmode=require"
 
 
-class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringaschool:moringa@localhost/letewaa_test'
+# class TestConfig(Config):
+#     SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringaschool:moringa@localhost/letewaa_test'
 
 class DevConfig(Config):
     
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringaschool:moringa@localhost/letewaa'
+    # SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringaschool:moringa@localhost/letewaa'
     
     DEBUG = True
 
