@@ -36,6 +36,8 @@ def register():
         seller =Seller(email = form.email.data, username = form.username.data,password =form.password.data)
         db.session.add(seller)
         db.session.commit()
+
+        mail_message("Welcome to watchlist","email/welcome_user",seller.email,seller=seller)
         
         return redirect(url_for('auth2.login'))
         title = "New Account"

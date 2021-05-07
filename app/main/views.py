@@ -13,52 +13,6 @@ current_seller=0
 @main.route('/')
 def index():
    
-    return render_template('index.html')
-
-@main.route('/buyer_login',methods=['GET','POST'])
-def login():
-    login_form = BuyerLoginForm()
-    if login_form.validate_on_submit():
-        user = User.query.filter_by(email = login_form.email.data).first()
-        if user is not None and user.verify_password(login_form.password.data):
-            login_user(user,login_form.remember.data)
-            return redirect(request.args.get('next') or url_for('main.user_page'))
-
-        flash('Invalid username or Password')
-
- 
-    return render_template('auth/login.html',login_form = login_form,)
-
-@main.route('/seller_login',methods=['GET','POST'])
-def logintwo():
-    login_form = SellerLoginForm()
-    if login_form.validate_on_submit():
-        seller = Seller.query.filter_by(email = login_form.email.data).first()
-        if seller is not None and seller.verify_password(login_form.password.data):
-            login_seller(seller,login_form.remember.data)
-            return redirect(request.args.get('next') or url_for('main.supplier_page'))
-
-        flash('Invalid username or Password')
-
- 
-    return render_template('auth2/login.html',login_form = login_form)
-
-
-
-@main.route('/buyer_register',methods = ["GET","POST"])
-def register():
-    form = BuyerRegistrationForm()
-    if form.validate_on_submit():
-        user =User(email = form.email.data, username = form.username.data,password =form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        
-        mail_message("Welcome to Letewaa","email/welcome_user",user.email,user=user)
-        
-        return redirect(url_for('auth.login'))
-        title = "New Account"
-    return render_template('auth/register.html',registration_form = form)
-
 
 
 
