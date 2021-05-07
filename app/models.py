@@ -9,11 +9,11 @@ from . import login_manager
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-@login_manager.user_loader
-def load_seller(seller_id):
-    return Seller.query.get(int(seller_id))
+# @login_manager.user_loader
+# def load_user(seller_id):
+#     return Seller.query.get(int(seller_id))
 
-# clea
+
 class User(db.Model,UserMixin):
     __tablename__='users'
 

@@ -43,7 +43,7 @@ def supplier_products(supplier_id):
     product = Product.query.filter_by(id=supplier_id).first()
     
     cart_items = Cart.query.filter_by(user_id=current_user._get_current_object().id).all()
-    print(len(cart_items))
+    # print(len(cart_items))
     cart_items_count = len(cart_items)
   
   
@@ -63,7 +63,7 @@ def add_to_cart(product_id):
     cart_item = Cart(product_id=product_id,user_id=current_user._get_current_object().id,product= product.product_name,product_picture=product.product_picture)
     cart_item.add_item_to_cart()
 
-    mail_message("Order received , email/order_received",user.email,user=user)
+    
 
     print(cart_item)
     
@@ -132,20 +132,23 @@ def user_confirmation(seller_id):
     new order, also thank the user 
     """
     
-    user = User.query.filter_by(id=current_user._get_current_object().id).first()
-   
+    
     cart_items= Cart.query.filter_by(user_id =current_user._get_current_object().id ).all()
     print(current_seller)
     for item in cart_items:
+       
         product = Product.query.filter_by(id=item.product_id).first()
         order_item_object= Orders(pizza_name=item.product,pizza_size=item.size,price=item.product_cost,user_id=current_user._get_current_object().id ,product_id=item.product_id,seller_id=seller_id)
-        order_item_object.add_order()
+        order_item_object.add_order()  
+        print(order_item_object)  
+        user = User.query.filter_by(id=current_user._get_current_object().id).first()
+        seller = Seller.query.filter_by(id=seller_id).first() 
+       
+        mail_message("Order has been sent","email/order_placed",user.email,user=user,item=item,seller=seller)
               
+    
     db.session.query(Cart).delete()
     db.session.commit()
-
-
-    mail_message("Order has been sent, email/order_sent",user.email,user=user)
    
    
     return render_template('user/confirmation_page.html',user=user)
@@ -169,7 +172,7 @@ def supplier_page():
     orders = Orders.query.filter_by(seller_id=current_user._get_current_object().id)
 
 
-    mail_message("An order has been placed , email/order_placed",user.email,user=user)
+   
    
     return render_template('supplier/supplier_page.html',orders=orders)
 
@@ -183,6 +186,7 @@ def get_orders():
    
     return render_template('supplier/orders_page.html',orders_list=orders_list)
 
+
 @main.route('/supplier_confirmation')
 @login_required
 def supplier_confirmation():
@@ -190,9 +194,17 @@ def supplier_confirmation():
     EMAIL 
     Supplier notified that he/she has accepted orders and notification has been sent to user
     """
-    
+   
+    orders_list = Orders.query.filter_by(seller_id=current_user._get_current_object().id).all()
+    for order in orders_list:
+        user = User.query.filter_by(id=order.user_id).first()
+        seller = Seller.query.filter_by(id=order.seller_id).first()
+        mail_message("Confirmation of order placed ","email/order_received",user.email,user=user,seller=seller)
+        
    
     return render_template('supplier/supplier-confirmation.html')
+
+
 
 @main.route('/clear_orders')
 @login_required
