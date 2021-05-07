@@ -1,3 +1,0 @@
-Dear {{user.username}}.
-
-Your order has been sent to the supplier. We will b in touch soon

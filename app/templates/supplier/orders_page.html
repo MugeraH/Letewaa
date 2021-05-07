@@ -6,7 +6,7 @@
     <div class="orders-list-wrapper">
       <div class="orders-wrapper container-fluid">
         <div class="row">
-          {%if order_list%} {%for item in orders_list%}
+          {%if orders_list%} {%for item in orders_list%}
           <div class="orders-item">
             <div class="order-title">
               <h2>{{item.pizza_name}}</h2>
@@ -15,7 +15,7 @@
 
             <h3>{{item.size}}</h3>
             <h3>Ksh.{{item.price}}</h3>
-            <h3>Ordered at:{{item.time.time()}}</h3>
+            <h3>Ordered at:{{item.time.strftime("%H:%M:%S")}}</h3>
             <h3>
               Status: {%if item.isAccepted%}
               <a
@@ -35,13 +35,15 @@
 
           {%endfor%} {%else%}
           <div>
-            <h2 class="text-center">You have no orders at the moment</h2>
+            <h2 class="text-center">
+              You have no pending orders at the moment
+            </h2>
           </div>
           {%endif%}
         </div>
       </div>
 
-      {%if order_list%}
+      {%if orders_list%}
       <div class="supplier-actions">
         <a
           href="{{url_for('main.supplier_confirmation')}}"
