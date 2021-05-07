@@ -573,3 +573,42 @@ input {
   background-color: red;
   color: white;
 }
+
+.profile-container {
+  background-color: red;
+  margin: 50px;
+  height: 700px;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.profile-wrapper {
+  height: 100%;
+}
+
+.profile-picture {
+  margin-top: 30px;
+
+  height: 100%;
+}
+
+.profile-picture img {
+  margin-bottom: 30px;
+  border: none;
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.profile-details {
+  margin-top: 30px;
+}
+.profile-update-form {
+  width: 80%;
+ 
+}
+
+.profile-update-form .btn {
+  margin-top: 30px;
+}
