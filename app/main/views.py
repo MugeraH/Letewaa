@@ -62,12 +62,12 @@ def add_to_cart(product_id):
     user_id = current_user
     cart_item = Cart(product_id=product_id,user_id=current_user._get_current_object().id,product= product.product_name,product_picture=product.product_picture)
     cart_item.add_item_to_cart()
+
     mail_message("Order received , email/order_received",user.email,user=user)
 
     print(cart_item)
     
     return redirect(url_for('.supplier_products', supplier_id = product.seller_id))
-
 
 
 @main.route('/checkout/<int:seller_id>')
@@ -84,9 +84,6 @@ def checkout(seller_id):
     total_cost_value= sum(total_cost)
     
     print(seller_id)
-    
-    
-   
       
     return render_template('user/checkout.html',cart_items=cart_items,total_cost_value=total_cost_value,seller_id=seller_id)
 
@@ -143,11 +140,12 @@ def user_confirmation(seller_id):
         product = Product.query.filter_by(id=item.product_id).first()
         order_item_object= Orders(pizza_name=item.product,pizza_size=item.size,price=item.product_cost,user_id=current_user._get_current_object().id ,product_id=item.product_id,seller_id=seller_id)
         order_item_object.add_order()
-        
-        
-        
+              
     db.session.query(Cart).delete()
     db.session.commit()
+
+
+    mail_message("Order has been sent, email/order_sent",user.email,user=user)
    
    
     return render_template('user/confirmation_page.html',user=user)
@@ -169,6 +167,9 @@ def supplier_page():
     user_id=current_user._get_current_object().id
     print(user_id)
     orders = Orders.query.filter_by(seller_id=current_user._get_current_object().id)
+
+
+    mail_message("An order has been placed , email/order_placed",user.email,user=user)
    
     return render_template('supplier/supplier_page.html',orders=orders)
 
