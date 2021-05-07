@@ -1,0 +1,33 @@
+{% macro displaySupplierList(supplier_list) %} {% for supplier in supplier_list
+%}
+<div class="col-md-6 mt-5">
+  <div class="supplier-card text-center">
+    <a href="{{url_for('main.supplier_products',supplier_id = supplier.id)}}"
+      ><h4>{{supplier.username}}</h4>
+    </a>
+  </div>
+</div>
+
+{% endfor %} {% endmacro %} {% macro
+displaySupplierProductsList(supplier_products_list) %} {% for product in
+supplier_products_list %}
+<div class="col-md-4 mt-5">
+  <div class="product-card" style="width: 21rem">
+    <img
+      src="{{url_for('static',filename=product.product_picture)}}"
+      alt="..."
+    />
+    <h4>{{product.product_name}}</h4>
+    <p>{{product.description}}</p>
+    <p>
+      <a
+        href="{{url_for('main.add_to_cart',product_id = product.id)}}"
+        class="btn btn-danger"
+        >Add to cart</a
+      >
+    </p>
+  </div>
+</div>
+
+{% endfor %} {% endmacro %}
+

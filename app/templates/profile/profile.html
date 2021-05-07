@@ -1,0 +1,52 @@
+{% extends 'base.html'%}{% import 'macros.html' as macro%} {% block content %}
+<div class="container-fluid">
+  <div class="row profile-container">
+    <div class="col-md-12">
+      <div class="row profile-wrapper">
+        <div class="col-md-6 profile-picture">
+          {% if user.profile_pic_path %}
+          <img
+            src="{{url_for('static',filename=user.profile_pic_path)}}"
+            alt=""
+          />
+
+          {%else%}
+          <p class="text-white">Add profile picture</p>
+
+          {% endif %} {% if user == current_user %}
+          <form
+            class="profile-form"
+            action="{{url_for('main.update_pic',uname=user.username)}}"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <input type="file" name="photo" class="form-control" required />
+            <a class="btn btn-outline-light" type="submit">Add</a>
+          </form>
+          {% endif %}
+        </div>
+        <div class="col-md-6 profile-details">
+          <h3 class="text-white">{{user.username| capitalize}}</h3>
+          {% if user.bio %}
+          <label>About </label>
+          <p class="text-white user_bio">{{user.bio}}</p>
+          {%else%}
+          <p class="text-white message">
+            "" Update your bio, tell us more about you ""
+          </p>
+          {% endif %}
+          <div class="user_edit_profile">
+            {% if user == current_user %}
+            <a
+              class="btn btn-success"
+              href="{{url_for('main.update_profile',uname=user.username)}}"
+              >Edit profile</a
+            >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

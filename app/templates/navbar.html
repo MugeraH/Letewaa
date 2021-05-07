@@ -1,0 +1,48 @@
+<div class="container-fluid p-0">
+  {% block styles %}
+  <link
+    rel="stylesheet"
+    href="{{url_for('static',filename='css/index.css')}}"
+  />
+  {% endblock %}
+
+  <div class="col-md-12 navbar p-3 mb-3">
+    <div class="nav-logo">
+      <a class="navbar-brand text-white ml-3" href="/"> Letewaa </a>
+    </div>
+
+    <ul class="nav mr-4">
+      <li>
+        <a class="text-white nav-link" href="#">Home</a>
+      </li>
+      {% if current_user.is_authenticated %}
+      <li class="text-white nav-link">
+        {{current_user.username | capitalize()}}
+      </li>
+      <li>
+        <a
+          class="text-white nav-link"
+          href="{{url_for('main.profile',uname=current_user.username)}}"
+          >Profile</a
+        >
+      </li>
+      <li>
+        <a class="text-white nav-link" href="{{url_for('auth.logout')}}"
+          >Sign out</a
+        >
+      </li>
+      {% else %}
+      <!-- <li>
+        <a class="text-white nav-link" href="{{url_for('auth.login')}}"
+          >Sign in</a
+        >
+          
+       <li>
+         <a class="text-white nav-link" href="{{url_for('auth.register')}}">Sign Up</a
+        >
+       </li> 
+      </li> -->
+      {%endif%}
+    </ul>
+  </div>
+</div>

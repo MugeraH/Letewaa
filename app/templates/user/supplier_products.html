@@ -1,0 +1,47 @@
+{% extends 'base.html' %}{% import 'macros.html' as macro%} {% block styles%} {{
+super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+{% endblock %}{% block content %}
+<!-- Create form to populate the db -->
+
+<div class="container-fluid">
+  <div class="supplier-wrapper">
+    <div class="product-details">
+      <div class="text-center"><h2>{{seller.username | capitalize()}}</h2></div>
+      <div
+        class="btn-group"
+        role="group"
+        aria-label="Basic mixed styles example"
+      >
+        <div class="price-btn bg-danger">
+          <p class="p-0 m-0">Large</p>
+          <span>Ksh:1000</span>
+        </div>
+        <div class="price-btn bg-warning">
+          <p class="p-0 m-0">Medium</p>
+          <span>Ksh:800</span>
+        </div>
+        <div class="price-btn bg-success">
+          <p class="p-0 m-0">Small</p>
+          <span>Ksh:500</span>
+        </div>
+      </div>
+    </div>
+    <div class="checkout-cart">
+      <div class="text-center"><h3>Cart items: {{cart_items_count}}</h3></div>
+      <a href="{{url_for('main.checkout',seller_id=seller.id)}}" class="btn btn-danger">Checkout</a>
+    </div>
+  </div>
+
+  <!-- <div class="product-title">
+  
+
+    <div class="cart-count">{{cart_items_count}}</div>
+  </div> -->
+
+  <div class="row products">
+    {{ macro.displaySupplierProductsList(supplier_products_list)}}
+  </div>
+</div>
+
+{% endblock %}

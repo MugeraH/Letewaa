@@ -1,0 +1,7 @@
+Hello {{user.username}}
+Your order reference
+id{{item.id}} 
+pizza name : {{item.product}} 
+Number of pizzas : {{item.amount}}
+Total price : {{item.product_cost}}
+has placed to {{seller.username}}. You will recieve proper communication on your order status shortly.  

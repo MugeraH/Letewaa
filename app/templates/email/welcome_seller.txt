@@ -1,0 +1,6 @@
+Hello {{seller.username}}. 
+
+Welcome to Letewaa. 
+
+Welcome to the Letewaa family. We are your go-tos in all matters delivery. Feel free to explore our application and start your journey with us!!
+

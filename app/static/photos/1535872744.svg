@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" width="900" height="347" id="svg2">
+<defs><filter color-interpolation-filters="sRGB" id="filter01">
+<feGaussianBlur id="feGaussianBlur01" stdDeviation="6.19" />
+</filter></defs>
+<g id="mrScale" transform="scale(0.19305019305019)">
+<g id="pabb">
+ <path id="pabb00T_h10" transform="translate(448,400)" d="M 272.5 67.53 C 331.17 103.37 379.0 154.76 379.0 222.0 C 379.0 237.0 377.12 254.02 373.5 272.5 L 308.5 604.5 C 301.51 641.67 277.14 705.0 189.0 705.0 C 131.26 705.0 79.0 668.42 79.0 614.0" style="fill:none; filter:url(#filter01); opacity:0.7; stroke:#D43A2F; stroke-width:29; stroke-dasharray:966; stroke-dashoffset:966;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="966" to="00" begin="0s; Apabb00u17.end + 2s" dur="0.69s" repeatCount="1" fill="freeze" id="Apabb00T_h10"/>
+<set attributeName="stroke-dashoffset" to="966" begin="Apabb00u17.end + 1s" />
+</path>
+ <path id="pabb01T_h10" transform="translate(448,400)" d="M 27.0 145.0 L 221.0 144.5 C 281.46 144.34 370.5 140.31 458.5 134.61 C 664.8 122.59 810.5 97.41 810.5 66.5 C 810.5 47.76 781.15 28.5 716.5 28.5 C 548.41 28.5 521.56 158.77 506.85 299.45 C 499.69 371.12 495.04 455.52 477.5 547.5 L 450.5 689.11 C 539.5 439.0 648.5 388.0 714.5 388.0 C 933.5 388.0 597.5 694.0 763.0 694.0 C 828.5 694.0 858.5 611.0 902.0 527.0" style="fill:none; filter:url(#filter01); opacity:0.7; stroke:#D43A2F; stroke-width:29; stroke-dasharray:2796; stroke-dashoffset:2796;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="2796" to="00" begin="Apabb00T_h10.end" dur="1.9971428571429s" repeatCount="1" fill="freeze" id="Apabb01T_h10"/>
+<set attributeName="stroke-dashoffset" to="2796" begin="Apabb00u17.end + 1s" />
+</path>
+ <path id="pabb00a11" transform="translate(1303,400)" d="M 333.0 471.63 C 302.68 427.2 264.38 394.0 216.0 394.0 C 121.33 394.0 44.5 472.23 44.5 568.63 C 44.5 635.42 95.12 689.63 157.5 689.63 C 283.44 689.63 322.59 526.55 352.0 390.0 L 325.0 527.0 C 309.94 603.41 300.06 694.0 366.0 694.0 C 422.92 694.0 466.0 623.63 514.0 527.0" style="fill:none; filter:url(#filter01); opacity:0.7; stroke:#D43A2F; stroke-width:29; stroke-dasharray:1607; stroke-dashoffset:1607;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="1607" to="00" begin="Apabb01T_h10.end" dur="1.1478571428571s" repeatCount="1" fill="freeze" id="Apabb00a11"/>
+<set attributeName="stroke-dashoffset" to="1607" begin="Apabb00u17.end + 1s" />
+</path>
+ <path id="pabb00n12" transform="translate(1769,400)" d="M 39.0 394.0 L 80.0 394.0 C 61.55 459.9 54.41 491.9 47.0 530.0 L 14.0 704.0" style="fill:none; filter:url(#filter01); opacity:0.7; stroke:#D43A2F; stroke-width:29; stroke-dasharray:408; stroke-dashoffset:408;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="408" to="00" begin="Apabb00a11.end" dur="0.29142857142857s" repeatCount="1" fill="freeze" id="Apabb00n12"/>
+<set attributeName="stroke-dashoffset" to="408" begin="Apabb00u17.end + 1s" />
+</path>
+ <path id="pabb01n12" transform="translate(1769,400)" d="M 48.0 527.0 C 108.17 424.67 210.5 388.0 245.5 388.0 C 464.5 388.0 149.5 694.0 315.0 694.0 C 380.5 694.0 410.5 611.0 454.0 527.0" style="fill:none; filter:url(#filter01); opacity:0.7; stroke:#D43A2F; stroke-width:29; stroke-dasharray:933; stroke-dashoffset:933;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="933" to="00" begin="Apabb00n12.end" dur="0.66642857142857s" repeatCount="1" fill="freeze" id="Apabb01n12"/>
+<set attributeName="stroke-dashoffset" to="933" begin="Apabb00u17.end + 1s" />
+</path>
+ <path id="pabb00k13" transform="translate(2175,400)" d="M 48.0 527.0 C 95.17 425.17 230.0 226.0 230.0 162.0 C 230.0 112.81 196.4 91.0 155.0 91.0 C 68.5 91.0 84.5 379.0 16.5 708.1 C 175.25 471.3 272.25 379.3 338.25 379.3 C 346.81 379.3 353.75 384.91 353.75 393.05 C 353.75 399.4 348.15 405.55 341.25 405.55 C 332.14 405.55 324.75 397.26 324.75 387.05" style="fill:none; filter:url(#filter01); opacity:0.7; stroke:#D43A2F; stroke-width:29; stroke-dasharray:1766; stroke-dashoffset:1766;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="1766" to="00" begin="Apabb01n12.end" dur="1.2614285714286s" repeatCount="1" fill="freeze" id="Apabb00k13"/>
+<set attributeName="stroke-dashoffset" to="1766" begin="Apabb00u17.end + 1s" />
+</path>
+ <path id="pabb01k13" transform="translate(2175,400)" d="M 159.25 515.3 C 238.25 548.3 218.6 702.0 281.0 702.0 C 346.5 702.0 380.5 611.0 424.0 527.0" style="fill:none; filter:url(#filter01); opacity:0.7; stroke:#D43A2F; stroke-width:29; stroke-dasharray:520; stroke-dashoffset:520;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="520" to="00" begin="Apabb00k13.end" dur="0.37142857142857s" repeatCount="1" fill="freeze" id="Apabb01k13"/>
+<set attributeName="stroke-dashoffset" to="520" begin="Apabb00u17.end + 1s" />
+</path>
+ <path id="pabb00Y15" transform="translate(2851,400)" d="M 97.0 82.5 C 148.5 121.0 164.0 170.5 164.0 207.5 C 164.0 269.5 125.5 341.5 106.0 403.5 C 89.5 454.0 78.5 507.5 78.5 552.5 C 78.5 647.5 127.5 685.0 192.5 685.0 C 293.0 685.0 411.0 581.0 500.0 116.0 L 411.5 572.5 C 393.96 662.97 366.2 804.6 348.0 900.0 C 335.2 966.97 280.0 994.0 222.0 994.0 C 150.0 994.0 75.0 952.58 75.0 899.0 C 75.0 756.27 439.83 804.39 577.0 527.0" style="fill:none; filter:url(#filter01); opacity:0.7; stroke:#D43A2F; stroke-width:29; stroke-dasharray:3252; stroke-dashoffset:3252;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="3252" to="00" begin="Apabb01k13.end" dur="2.3228571428571s" repeatCount="1" fill="freeze" id="Apabb00Y15"/>
+<set attributeName="stroke-dashoffset" to="3252" begin="Apabb00u17.end + 1s" />
+</path>
+ <path id="pabb00o16" transform="translate(3380,400)" d="M 178.5 403.1 C 78.5 447.1 43.0 505.1 43.0 574.0 C 43.0 631.0 87.0 693.0 182.0 693.0 C 268.87 693.0 349.37 596.52 349.37 515.7 C 349.37 442.45 304.85 383.0 250.0 383.0 C 221.96 383.0 189.19 423.83 189.19 474.15 C 189.19 567.35 250.18 643.0 313.0 643.0 C 362.5 643.0 402.0 623.63 450.0 527.0" style="fill:none; filter:url(#filter01); opacity:0.7; stroke:#D43A2F; stroke-width:29; stroke-dasharray:1476; stroke-dashoffset:1476;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="1476" to="00" begin="Apabb00Y15.end" dur="1.0542857142857s" repeatCount="1" fill="freeze" id="Apabb00o16"/>
+<set attributeName="stroke-dashoffset" to="1476" begin="Apabb00u17.end + 1s" />
+</path>
+ <path id="pabb00u17" transform="translate(3782,400)" d="M 39.0 394.0 L 86.0 394.0 C 71.92 438.5 35.0 559.8 35.0 609.0 C 35.0 655.92 64.87 694.0 124.0 694.0 C 213.87 694.0 312.5 569.46 352.0 384.0 C 340.78 432.99 259.05 691.0 332.0 691.0 C 394.5 691.0 441.44 602.83 480.0 527.0" style="fill:none; filter:url(#filter01); opacity:0.7; stroke:#D43A2F; stroke-width:29; stroke-dasharray:1424; stroke-dashoffset:1424;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="1424" to="00" begin="Apabb00o16.end" dur="1.0171428571429s" repeatCount="1" fill="freeze" id="Apabb00u17"/>
+<set attributeName="stroke-dashoffset" to="1424" begin="Apabb00u17.end + 1s" />
+</path>
+</g>
+<g id="paba">
+ <path id="paba00T_h10" transform="translate(448,400)" d="M 266.5 73.53 C 325.17 109.37 373.0 160.76 373.0 228.0 C 373.0 243.0 371.12 260.02 367.5 278.5 L 302.5 610.5 C 295.51 647.67 271.14 711.0 183.0 711.0 C 125.26 711.0 73.0 674.42 73.0 620.0" style="fill:none; stroke:#D43A2F; stroke-width:29; stroke-dasharray:966; stroke-dashoffset:966;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="966" to="00" begin="0s; Apaba00u17.end + 2s" dur="0.69s" repeatCount="1" fill="freeze" id="Apaba00T_h10"/>
+<set attributeName="stroke-dashoffset" to="966" begin="Apaba00u17.end + 1s" />
+</path>
+ <path id="paba01T_h10" transform="translate(448,400)" d="M 21.0 151.0 L 215.0 150.5 C 275.46 150.34 364.5 146.31 452.5 140.61 C 658.8 128.59 804.5 103.41 804.5 72.5 C 804.5 53.76 775.15 34.5 710.5 34.5 C 542.41 34.5 515.56 164.77 500.85 305.45 C 493.69 377.12 489.04 461.52 471.5 553.5 L 444.5 695.11 C 533.5 445.0 642.5 394.0 708.5 394.0 C 927.5 394.0 591.5 700.0 757.0 700.0 C 822.5 700.0 852.5 617.0 896.0 533.0" style="fill:none; stroke:#D43A2F; stroke-width:29; stroke-dasharray:2796; stroke-dashoffset:2796;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="2796" to="00" begin="Apaba00T_h10.end" dur="1.9971428571429s" repeatCount="1" fill="freeze" id="Apaba01T_h10"/>
+<set attributeName="stroke-dashoffset" to="2796" begin="Apaba00u17.end + 1s" />
+</path>
+ <path id="paba00a11" transform="translate(1303,400)" d="M 327.0 477.63 C 296.68 433.2 258.38 400.0 210.0 400.0 C 115.33 400.0 38.5 478.23 38.5 574.63 C 38.5 641.42 89.12 695.63 151.5 695.63 C 277.44 695.63 316.59 532.55 346.0 396.0 L 319.0 533.0 C 303.94 609.41 294.06 700.0 360.0 700.0 C 416.92 700.0 460.0 629.63 508.0 533.0" style="fill:none; stroke:#D43A2F; stroke-width:29; stroke-dasharray:1607; stroke-dashoffset:1607;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="1607" to="00" begin="Apaba01T_h10.end" dur="1.1478571428571s" repeatCount="1" fill="freeze" id="Apaba00a11"/>
+<set attributeName="stroke-dashoffset" to="1607" begin="Apaba00u17.end + 1s" />
+</path>
+ <path id="paba00n12" transform="translate(1769,400)" d="M 33.0 400.0 L 74.0 400.0 C 55.55 465.9 48.41 497.9 41.0 536.0 L 8.0 710.0" style="fill:none; stroke:#D43A2F; stroke-width:29; stroke-dasharray:408; stroke-dashoffset:408;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="408" to="00" begin="Apaba00a11.end" dur="0.29142857142857s" repeatCount="1" fill="freeze" id="Apaba00n12"/>
+<set attributeName="stroke-dashoffset" to="408" begin="Apaba00u17.end + 1s" />
+</path>
+ <path id="paba01n12" transform="translate(1769,400)" d="M 42.0 533.0 C 102.17 430.67 204.5 394.0 239.5 394.0 C 458.5 394.0 143.5 700.0 309.0 700.0 C 374.5 700.0 404.5 617.0 448.0 533.0" style="fill:none; stroke:#D43A2F; stroke-width:29; stroke-dasharray:933; stroke-dashoffset:933;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="933" to="00" begin="Apaba00n12.end" dur="0.66642857142857s" repeatCount="1" fill="freeze" id="Apaba01n12"/>
+<set attributeName="stroke-dashoffset" to="933" begin="Apaba00u17.end + 1s" />
+</path>
+ <path id="paba00k13" transform="translate(2175,400)" d="M 42.0 533.0 C 89.17 431.17 224.0 232.0 224.0 168.0 C 224.0 118.81 190.4 97.0 149.0 97.0 C 62.5 97.0 78.5 385.0 10.5 714.1 C 169.25 477.3 266.25 385.3 332.25 385.3 C 340.81 385.3 347.75 390.91 347.75 399.05 C 347.75 405.4 342.15 411.55 335.25 411.55 C 326.14 411.55 318.75 403.26 318.75 393.05" style="fill:none; stroke:#D43A2F; stroke-width:29; stroke-dasharray:1766; stroke-dashoffset:1766;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="1766" to="00" begin="Apaba01n12.end" dur="1.2614285714286s" repeatCount="1" fill="freeze" id="Apaba00k13"/>
+<set attributeName="stroke-dashoffset" to="1766" begin="Apaba00u17.end + 1s" />
+</path>
+ <path id="paba01k13" transform="translate(2175,400)" d="M 153.25 521.3 C 232.25 554.3 212.6 708.0 275.0 708.0 C 340.5 708.0 374.5 617.0 418.0 533.0" style="fill:none; stroke:#D43A2F; stroke-width:29; stroke-dasharray:520; stroke-dashoffset:520;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="520" to="00" begin="Apaba00k13.end" dur="0.37142857142857s" repeatCount="1" fill="freeze" id="Apaba01k13"/>
+<set attributeName="stroke-dashoffset" to="520" begin="Apaba00u17.end + 1s" />
+</path>
+ <path id="paba00Y15" transform="translate(2851,400)" d="M 91.0 88.5 C 142.5 127.0 158.0 176.5 158.0 213.5 C 158.0 275.5 119.5 347.5 100.0 409.5 C 83.5 460.0 72.5 513.5 72.5 558.5 C 72.5 653.5 121.5 691.0 186.5 691.0 C 287.0 691.0 405.0 587.0 494.0 122.0 L 405.5 578.5 C 387.96 668.97 360.2 810.6 342.0 906.0 C 329.2 972.97 274.0 1000.0 216.0 1000.0 C 144.0 1000.0 69.0 958.58 69.0 905.0 C 69.0 762.27 433.83 810.39 571.0 533.0" style="fill:none; stroke:#D43A2F; stroke-width:29; stroke-dasharray:3252; stroke-dashoffset:3252;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="3252" to="00" begin="Apaba01k13.end" dur="2.3228571428571s" repeatCount="1" fill="freeze" id="Apaba00Y15"/>
+<set attributeName="stroke-dashoffset" to="3252" begin="Apaba00u17.end + 1s" />
+</path>
+ <path id="paba00o16" transform="translate(3380,400)" d="M 172.5 409.1 C 72.5 453.1 37.0 511.1 37.0 580.0 C 37.0 637.0 81.0 699.0 176.0 699.0 C 262.87 699.0 343.37 602.52 343.37 521.7 C 343.37 448.45 298.85 389.0 244.0 389.0 C 215.96 389.0 183.19 429.83 183.19 480.15 C 183.19 573.35 244.18 649.0 307.0 649.0 C 356.5 649.0 396.0 629.63 444.0 533.0" style="fill:none; stroke:#D43A2F; stroke-width:29; stroke-dasharray:1476; stroke-dashoffset:1476;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="1476" to="00" begin="Apaba00Y15.end" dur="1.0542857142857s" repeatCount="1" fill="freeze" id="Apaba00o16"/>
+<set attributeName="stroke-dashoffset" to="1476" begin="Apaba00u17.end + 1s" />
+</path>
+ <path id="paba00u17" transform="translate(3782,400)" d="M 33.0 400.0 L 80.0 400.0 C 65.92 444.5 29.0 565.8 29.0 615.0 C 29.0 661.92 58.87 700.0 118.0 700.0 C 207.87 700.0 306.5 575.46 346.0 390.0 C 334.78 438.99 253.05 697.0 326.0 697.0 C 388.5 697.0 435.44 608.83 474.0 533.0" style="fill:none; stroke:#D43A2F; stroke-width:29; stroke-dasharray:1424; stroke-dashoffset:1424;" >
+<animate attributeType="XML" attributeName="stroke-dashoffset" from="1424" to="00" begin="Apaba00o16.end" dur="1.0171428571429s" repeatCount="1" fill="freeze" id="Apaba00u17"/>
+<set attributeName="stroke-dashoffset" to="1424" begin="Apaba00u17.end + 1s" />
+</path>
+</g>
+</g>
+</svg>

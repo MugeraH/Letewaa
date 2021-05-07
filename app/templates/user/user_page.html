@@ -1,0 +1,23 @@
+{% extends 'base.html' %}{% import 'macros.html' as macro%} {% block styles%} {{
+super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+{% endblock %}{% block content %}
+<!-- Create form to populate the db -->
+
+<div class="container-fluid">
+  <div class="weather">
+    <div class="image text-white">
+      <img src="{{url_for('static',filename=weather_icon)}}" alt="" />
+    </div>
+    <div class="info">
+      <div class="text-center"><h4>{{weather_data[1]}}</h4></div>
+      <div class="text-center"><h5>{{suggestion}}</h5></div>
+    </div>
+  </div>
+  <div class="row suppliers">
+    <h3 class="text-center">Suppliers</h3>
+    {{ macro.displaySupplierList(supplier_list)}}
+  </div>
+</div>
+
+{% endblock %}
